@@ -41,7 +41,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="toolbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -51,26 +51,22 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>MENU</span>
-      <button mat-icon-button matTooltip="Gerenciar conta" [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle</mat-icon>
-      </button>
+      <div class="user-section">
+        <span mat-subheader>Usuário</span>
+        <button mat-icon-button matTooltip="Gerenciar conta" [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </div>
       <mat-menu #menu="matMenu">
         <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span>Redial</span>
+          <mat-icon>settings</mat-icon>
+          <span>Configurações da Conta</span>
         </button>
         <button mat-menu-item>
-          <mat-icon>voicemail</mat-icon>
-          <span>Check voice mail</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>notifications_off</mat-icon>
-          <span>Disable alerts</span>
+          <mat-icon>logout</mat-icon>
+          <span>Sair</span>
         </button>
       </mat-menu>
-      <button mat-icon-button matTooltip="Sair">
-        <mat-icon>logout</mat-icon>
-      </button>
     </mat-toolbar>
 
   </mat-sidenav-content>
