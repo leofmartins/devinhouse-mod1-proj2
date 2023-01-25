@@ -15,3 +15,20 @@
   top: 0;
   z-index: 1;
 }
+
+.logo {
+  width: 100px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-toolbar.labmedical {
+  justify-content: center;
+}
+
+.sidenav {
+  width: 220px;
+}

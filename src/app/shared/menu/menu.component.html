@@ -1,13 +1,43 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <div class="logo-container">
+      <img src="./assets/labmedical-logo.png" alt="Labmedical logo" class="logo">
+    </div>
+    <mat-toolbar class="labmedical">LABMedical</mat-toolbar>
+    <mat-divider></mat-divider>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <h2 mat-subheader>Geral</h2>
+      <a mat-menu-item href="#">
+        <mat-icon>home</mat-icon>
+        <span>Início</span>
+      </a>
+      <a mat-menu-item href="#">
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </a>
+      <mat-divider></mat-divider>
+      <h2 mat-subheader>Pacientes</h2>
+      <a mat-menu-item routerLink="#">
+        <mat-icon>add</mat-icon>
+        <span>Cadastrar</span>
+      </a>
+      <a mat-menu-item href="#">
+        <mat-icon>list</mat-icon>
+        <span>Listar</span>
+      </a>
+      <mat-divider></mat-divider>
+      <h2 mat-subheader>Exames</h2>
+      <a mat-menu-item href="#">
+        <mat-icon>add</mat-icon>
+        <span>Cadastrar Consulta</span>
+      </a>
+      <a mat-menu-item href="#">
+        <mat-icon>add</mat-icon>
+        <span>Cadastrar Exame</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,8 +50,28 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Modulo1Projeto2</span>
+      <span>MENU</span>
+      <button mat-icon-button matTooltip="Gerenciar conta" [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+      <button mat-icon-button matTooltip="Sair">
+        <mat-icon>logout</mat-icon>
+      </button>
     </mat-toolbar>
-    <!-- Add Content Here -->
+
   </mat-sidenav-content>
 </mat-sidenav-container>
