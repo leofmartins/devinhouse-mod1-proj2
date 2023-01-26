@@ -1,0 +1,215 @@
+<form [formGroup]="addPeolpleForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Substituir essa parte pelos template de botões de Editar e Salvar</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions class="add-form-button-group">
+      <mat-slide-toggle>Editar</mat-slide-toggle>
+      <button mat-stroked-button color="warn">DELETAR</button>
+      <button mat-raised-button color="primary">SALVAR</button>
+    </mat-card-actions>
+    <mat-card-content>
+      <mat-card-title>Identificação</mat-card-title>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome completo" formControlName="name">
+            <mat-error
+              *ngIf="addPeolpleForm.controls['name'].hasError('minlength') && !addPeolpleForm.controls['name'].hasError('required')">
+              O nome tem de ter pelo <strong>mínimo 8 caracteres</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addPeolpleForm.controls['name'].hasError('maxlength') && !addPeolpleForm.controls['name'].hasError('required')">
+              O nome tem de ter no <strong>máximo 64 caracteres</strong>
+            </mat-error>
+            <mat-error *ngIf="addPeolpleForm.controls['name'].hasError('required')">
+              O nome é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Selecione o gênero" formControlName="gender" required>
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{ gender }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addPeolpleForm.controls['gender'].hasError('required')">
+              O gênero é <strong>obrigatário</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Data de nascimento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthdate">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="addPeolpleForm.controls['birthdate'].hasError('required')">
+              A data de nascimento é <strong>obrigatária</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="000.000.000-00" formControlName="cpf">
+            <mat-error *ngIf="addPeolpleForm.controls['cpf'].hasError('required')">
+              O CPF é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>RG</mat-label>
+            <input matInput placeholder="Informe o RG" formControlName="rg">
+            <mat-error
+              *ngIf="addPeolpleForm.controls['rg'].hasError('maxlength') && !addPeolpleForm.controls['rg'].hasError('required')">
+              O RG deve possuir no <strong>máximo 20 caracteres</strong>
+            </mat-error><mat-error *ngIf="addPeolpleForm.controls['rg'].hasError('required')">
+              O RG é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Selecione o estado civil" formControlName="maritalStatus" required>
+              <mat-option *ngFor="let maritalStatus of maritalStatus" [value]="maritalStatus">
+                {{ maritalStatus }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addPeolpleForm.controls['maritalStatus'].hasError('required')">
+              O estado civil é <strong>obrigatário</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="(00) 0000-0000" formControlName="phoneNumber">
+            <mat-error *ngIf="addPeolpleForm.controls['phoneNumber'].hasError('required')">
+              O telefone é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="alex@email.com" formControlName="email">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Naturalidade</mat-label>
+            <input matInput placeholder="Cidade" formControlName="birthTown">
+            <mat-error *ngIf="addPeolpleForm.controls['birthTown'].hasError('required')">
+              A naturalidade é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-card-title>Convênio</mat-card-title>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Convênio</mat-label>
+            <input matInput placeholder="Informe o nome do convênio" formControlName="healthInsurance">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Número da carteira</mat-label>
+            <input matInput placeholder="Informe o nª do convênio" formControlName="healthCareNumber">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Validade</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthdate">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-card-title>Endereço</mat-card-title>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>CEP</mat-label>
+            <input matInput placeholder="Informe o CEP" formControlName="postalCode">
+            <mat-error *ngIf="addPeolpleForm.controls['postalCode'].hasError('required')">
+              O CEP é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Cidade</mat-label>
+            <input matInput placeholder="Informe a Cidade" formControlName="town">
+            <mat-error *ngIf="addPeolpleForm.controls['town'].hasError('required')">
+              A cidade é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Estado</mat-label>
+            <input matInput placeholder="Informe o Estado" formControlName="state">
+            <mat-error *ngIf="addPeolpleForm.controls['state'].hasError('required')">
+              O Estado é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Logradouro</mat-label>
+            <input matInput placeholder="Informe o nome da rua" formControlName="street">
+            <mat-error *ngIf="addPeolpleForm.controls['street'].hasError('required')">
+              A rua é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Número</mat-label>
+            <input matInput placeholder="Informe o número" formControlName="houseNumber">
+            <mat-error *ngIf="addPeolpleForm.controls['houseNumber'].hasError('required')">
+              O número é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Complemento</mat-label>
+            <input matInput placeholder="Informe um complemento" formControlName="complement">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Bairro</mat-label>
+            <input matInput placeholder="Informe o bairro" formControlName="neighborhood">
+            <mat-error *ngIf="addPeolpleForm.controls['neighborhood'].hasError('required')">
+              O bairro é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Ponto de Rerefência</mat-label>
+            <input matInput placeholder="Informe um ponto de referência" formControlName="reference">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

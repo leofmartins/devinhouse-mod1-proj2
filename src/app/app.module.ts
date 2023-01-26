@@ -15,12 +15,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { AddPeopleComponent } from './feature/add-people/add-people.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    AddPeopleComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +45,19 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatIconModule,
     MatListModule,
     MatMenuModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatButtonToggleModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
