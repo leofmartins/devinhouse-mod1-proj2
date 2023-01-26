@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { AddPeopleComponent } from './feature/add-people/add-people.component';
+import { AddPeopleComponent } from './features/add-people/add-people.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -25,13 +25,15 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    AddPeopleComponent
+    AddPeopleComponent,
+    AddAppointmentComponent
   ],
   imports: [
     BrowserModule,
