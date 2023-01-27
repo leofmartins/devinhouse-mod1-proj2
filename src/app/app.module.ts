@@ -28,6 +28,7 @@ import { MomentDateAdapter } from "@angular/material-moment-adapter";
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
+import { AddExamComponent } from './features/add-exam/add-exam.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AddAppointmentComponent } from './features/add-appointment/add-appointm
     AppComponent,
     MenuComponent,
     AddPeopleComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    AddExamComponent
   ],
   imports: [
     BrowserModule,
