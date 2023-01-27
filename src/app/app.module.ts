@@ -23,8 +23,9 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MomentDateAdapter } from "@angular/material-moment-adapter";
 
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
 
@@ -59,7 +60,28 @@ import { AddAppointmentComponent } from './features/add-appointment/add-appointm
     MatMomentDateModule
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+    {
+      provide: MAT_DATE_LOCALE,
+      useValue: 'pt-br'},
+
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },{
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'L',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        }
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })
