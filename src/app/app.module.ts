@@ -22,11 +22,11 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
-import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 
 
 @NgModule({
@@ -55,9 +55,8 @@ import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
     MatCardModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatMomentDateModule,
     MatButtonToggleModule,
-    NgxMaterialTimepickerModule.setLocale('pr-BR')
+    MatMomentDateModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
