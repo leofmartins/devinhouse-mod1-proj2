@@ -7,7 +7,60 @@
     </mat-card-actions>
     <mat-card-content>
       <mat-card-title>Consulta de [Nome do Paciente]</mat-card-title>
-      
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Motivo da Consulta</mat-label>
+            <input matInput placeholder="Informe o motivo da consulta" formControlName="subject">
+            <mat-error *ngIf="addAppointmentForm.controls['subject'].hasError('required')">
+              O motivo da consulta é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Data da consulta</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="addAppointmentForm.controls['date'].hasError('required')">
+              A data da consulta<strong>obrigatória</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Hora da consulta</mat-label>
+            <input matInput type="time" [ngxTimepicker]="timepicker">
+          </mat-form-field>
+          <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width">
+          <mat-label>Descrição do Problema</mat-label>
+          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
+          <mat-error *ngIf="addAppointmentForm.controls['description'].hasError('required')">
+            A descrição é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width">
+          <mat-label>Medicação Receita</mat-label>
+          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="full-width">
+          <mat-label>Dosagem e precauções</mat-label>
+          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
+          <mat-error *ngIf="addAppointmentForm.controls['description'].hasError('required')">
+            A descrição é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
     </mat-card-content>
   </mat-card>
 </form>

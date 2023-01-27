@@ -1,4 +1,4 @@
-<form [formGroup]="addPeolpleForm" novalidate (ngSubmit)="onSubmit()">
+<form [formGroup]="addPeopleForm" novalidate (ngSubmit)="onSubmit()">
   <mat-card class="add-people-card">
     <mat-card-actions class="add-form-button-group">
       <mat-slide-toggle>Editar</mat-slide-toggle>
@@ -12,14 +12,14 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Nome completo" formControlName="name">
             <mat-error
-              *ngIf="addPeolpleForm.controls['name'].hasError('minlength') && !addPeolpleForm.controls['name'].hasError('required')">
+              *ngIf="addPeopleForm.controls['name'].hasError('minlength') && !addPeopleForm.controls['name'].hasError('required')">
               O nome tem de ter pelo <strong>mínimo 8 caracteres</strong>
             </mat-error>
             <mat-error
-              *ngIf="addPeolpleForm.controls['name'].hasError('maxlength') && !addPeolpleForm.controls['name'].hasError('required')">
+              *ngIf="addPeopleForm.controls['name'].hasError('maxlength') && !addPeopleForm.controls['name'].hasError('required')">
               O nome tem de ter no <strong>máximo 64 caracteres</strong>
             </mat-error>
-            <mat-error *ngIf="addPeolpleForm.controls['name'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['name'].hasError('required')">
               O nome é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -31,7 +31,7 @@
                 {{ gender }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="addPeolpleForm.controls['gender'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['gender'].hasError('required')">
               O gênero é <strong>obrigatário</strong>
             </mat-error>
           </mat-form-field>
@@ -43,7 +43,7 @@
             <mat-hint>DD/MM/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="addPeolpleForm.controls['birthdate'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['birthdate'].hasError('required')">
               A data de nascimento é <strong>obrigatária</strong>
             </mat-error>
           </mat-form-field>
@@ -54,7 +54,7 @@
           <mat-form-field class="full-width">
             <mat-label>CPF</mat-label>
             <input matInput placeholder="000.000.000-00" formControlName="cpf">
-            <mat-error *ngIf="addPeolpleForm.controls['cpf'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['cpf'].hasError('required')">
               O CPF é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -64,9 +64,9 @@
             <mat-label>RG</mat-label>
             <input matInput placeholder="Informe o RG" formControlName="rg">
             <mat-error
-              *ngIf="addPeolpleForm.controls['rg'].hasError('maxlength') && !addPeolpleForm.controls['rg'].hasError('required')">
+              *ngIf="addPeopleForm.controls['rg'].hasError('maxlength') && !addPeopleForm.controls['rg'].hasError('required')">
               O RG deve possuir no <strong>máximo 20 caracteres</strong>
-            </mat-error><mat-error *ngIf="addPeolpleForm.controls['rg'].hasError('required')">
+            </mat-error><mat-error *ngIf="addPeopleForm.controls['rg'].hasError('required')">
               O RG é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -78,7 +78,7 @@
                 {{ maritalStatus }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="addPeolpleForm.controls['maritalStatus'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['maritalStatus'].hasError('required')">
               O estado civil é <strong>obrigatário</strong>
             </mat-error>
           </mat-form-field>
@@ -89,7 +89,7 @@
           <mat-form-field class="full-width">
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="(00) 0000-0000" formControlName="phoneNumber">
-            <mat-error *ngIf="addPeolpleForm.controls['phoneNumber'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['phoneNumber'].hasError('required')">
               O telefone é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -104,7 +104,7 @@
           <mat-form-field class="full-width">
             <mat-label>Naturalidade</mat-label>
             <input matInput placeholder="Cidade" formControlName="birthTown">
-            <mat-error *ngIf="addPeolpleForm.controls['birthTown'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['birthTown'].hasError('required')">
               A naturalidade é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -140,7 +140,7 @@
           <mat-form-field class="full-width">
             <mat-label>CEP</mat-label>
             <input matInput placeholder="Informe o CEP" formControlName="postalCode">
-            <mat-error *ngIf="addPeolpleForm.controls['postalCode'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['postalCode'].hasError('required')">
               O CEP é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -149,7 +149,7 @@
           <mat-form-field class="full-width">
             <mat-label>Cidade</mat-label>
             <input matInput placeholder="Informe a Cidade" formControlName="town">
-            <mat-error *ngIf="addPeolpleForm.controls['town'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['town'].hasError('required')">
               A cidade é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -158,7 +158,7 @@
           <mat-form-field class="full-width">
             <mat-label>Estado</mat-label>
             <input matInput placeholder="Informe o Estado" formControlName="state">
-            <mat-error *ngIf="addPeolpleForm.controls['state'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['state'].hasError('required')">
               O Estado é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -169,7 +169,7 @@
           <mat-form-field class="full-width">
             <mat-label>Logradouro</mat-label>
             <input matInput placeholder="Informe o nome da rua" formControlName="street">
-            <mat-error *ngIf="addPeolpleForm.controls['street'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['street'].hasError('required')">
               A rua é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -178,7 +178,7 @@
           <mat-form-field class="full-width">
             <mat-label>Número</mat-label>
             <input matInput placeholder="Informe o número" formControlName="houseNumber">
-            <mat-error *ngIf="addPeolpleForm.controls['houseNumber'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['houseNumber'].hasError('required')">
               O número é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>
@@ -195,7 +195,7 @@
           <mat-form-field class="full-width">
             <mat-label>Bairro</mat-label>
             <input matInput placeholder="Informe o bairro" formControlName="neighborhood">
-            <mat-error *ngIf="addPeolpleForm.controls['neighborhood'].hasError('required')">
+            <mat-error *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
               O bairro é <strong>obrigatório</strong>
             </mat-error>
           </mat-form-field>

@@ -26,6 +26,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
+import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { AddAppointmentComponent } from './features/add-appointment/add-appointm
     ReactiveFormsModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    NgxMaterialTimepickerModule.setLocale('pr-BR')
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}

@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-people.component.css']
 })
 export class AddPeopleComponent {
-  addPeolpleForm = this.fb.group({
+  addPeopleForm = this.fb.group({
     allergies: [null],
     birthTown: [null, Validators.required],
     birthdate: [null, Validators.required],

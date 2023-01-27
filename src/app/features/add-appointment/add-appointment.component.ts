@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ['./add-appointment.component.css']
 })
 export class AddAppointmentComponent {
-  addAppointmentForm = this.fb.group([{
+  addAppointmentForm = this.fb.group({
     subject: [null, Validators.compose([
       Validators.required, Validators.minLength(8), Validators.maxLength(64)
     ])],
@@ -20,6 +20,6 @@ export class AddAppointmentComponent {
     precaution: [null, Validators.compose([
       Validators.required, Validators.minLength(16), Validators.maxLength(256)
     ])]
-  }]);
+  });
   constructor(private fb: FormBuilder) { }
 }
