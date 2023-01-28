@@ -1,1 +1,114 @@
-<p>add-exam works!</p>
+<form [formGroup]="addExamForm" novalidate>
+  <mat-card class="add-exam-card">
+    <mat-card-content>
+      <mat-card-actions class="add-form-button-group">
+        <mat-slide-toggle>Editar</mat-slide-toggle>
+        <button mat-stroked-button color="warn">DELETAR</button>
+        <button mat-raised-button color="primary">SALVAR</button>
+      </mat-card-actions>
+      <mat-card-title>Exame de [Nome do Paciente]</mat-card-title>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Nome do Exame</mat-label>
+            <input matInput placeholder="Informe o nome do exame" formControlName="examName">
+            <mat-error *ngIf="addExamForm.controls['examName'].hasError('required')">
+              O nome do exame é <strong>obrigarório</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['examName'].hasError('minlength') &&
+            !addExamForm.controls['examName'].hasError('required')">
+              O nome do exame deve ter pelo menos <strong> 8 caracteres</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['examName'].hasError('maxlength') &&
+            !addExamForm.controls['examName'].hasError('required')">
+              O nome do exame deve ter no máximo <strong> 64 caracteres</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Data do exame</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="addExamForm.controls['examDate'].hasError('required')">
+              A data do exame é <strong>obrigatória</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Hoárário do exame</mat-label>
+            <input matInput type="time">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Tipo de exame</mat-label>
+            <input matInput placeholder="Informe o tipo do exmae" formControlName="examType">
+            <mat-error *ngIf="addExamForm.controls['examTime'].hasError('required')">
+              O tipo do exame é <strong>obriatório</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['examType'].hasError('minlength') &&
+            !addExamForm.controls['examType'].hasError('required')">
+              O nome do exame deve ter pelo menos <strong> 4 caracteres</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['examType'].hasError('maxlength') &&
+            !addExamForm.controls['examType'].hasError('required')">
+              O nome do exame deve ter no máximo <strong> 32 caracteres</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Laboratório</mat-label>
+            <input matInput placeholder="Informe o laboratório" formControlName="labName">
+            <mat-error
+              *ngIf="addExamForm.controls['labName'].hasError('minlength') &&
+            !addExamForm.controls['labName'].hasError('required')">
+              O nome do laboratório deve ter pelo menos <strong> 4 caracteres</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['labName'].hasError('maxlength') &&
+            !addExamForm.controls['labName'].hasError('required')">
+              O nome do laboratório deve ter no máximo <strong> 32 caracteres</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field class="col">
+          <mat-label>URL do documento do exame</mat-label>
+          <input type="url" matInput formControlName="reportUrl">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea cols="30" rows="10" matInput placeholder="Informe os resultados..." formControlName="results"></textarea>
+            <mat-error *ngIf="addExamForm.controls['results'].hasError('required')">
+              O resultado é <strong>obriatório</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['results'].hasError('minlength') &&
+            !addExamForm.controls['results'].hasError('required')">
+              O resultado deve ter pelo menos <strong> 16 caracteres</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="addExamForm.controls['results'].hasError('maxlength') &&
+            !addExamForm.controls['results'].hasError('required')">
+              O resultado deve ter no máximo <strong> 1024 caracteres</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

@@ -1,4 +1,4 @@
-<form>
+<form >
   <mat-card class="add-appointment-card">
     <mat-card-actions class="add-form-button-group">
       <mat-slide-toggle>Editar</mat-slide-toggle>
@@ -30,7 +30,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Hora da consulta</mat-label>
             <input matInput type="time">
           </mat-form-field>
@@ -54,9 +54,9 @@
       <div class="row">
         <mat-form-field class="full-width">
           <mat-label>Dosagem e precauções</mat-label>
-          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
-          <mat-error *ngIf="addAppointmentForm.controls['description'].hasError('required')">
-            A descrição é <strong>obrigatória</strong>
+          <textarea matInput placeholder="Informe a detalhes da dosagem e precauções..."></textarea>
+          <mat-error *ngIf="addAppointmentForm.controls['precaution'].hasError('required')">
+            Este campo é <strong>obrigatório</strong>
           </mat-error>
         </mat-form-field>
       </div>
