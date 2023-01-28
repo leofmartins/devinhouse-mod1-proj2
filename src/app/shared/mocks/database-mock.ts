@@ -3,7 +3,7 @@ import { Person, User } from "src/app/shared/interfaces/interfaces";
 export const PERSONS: Person[] = [
   {
     "id": "31af5b68-3b50-4aea-8841-f6735ca01e08",
-    "seqId": 1,
+    "seqId": '0001',
     "address": {
       "cep": "88034040",
       "city": "Florianópolis",
@@ -50,7 +50,7 @@ export const PERSONS: Person[] = [
   },
   {
     "id": "b4960d68-b041-47c4-915f-f17ce947c573",
-    "seqId": 2,
+    "seqId": '0002',
     "address": {
       "cep": "88034040",
       "city": "Florianópolis",
@@ -104,5 +104,5 @@ export const USERS: User[] = [
   }
 ]
 
-export let lastSequencialIDRegistered: number;
-lastSequencialIDRegistered = 2;
+export let lastSequencialIDRegistered: string;
+lastSequencialIDRegistered = '2';

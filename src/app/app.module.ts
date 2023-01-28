@@ -29,6 +29,10 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { AddAppointmentComponent } from './features/add-appointment/add-appointment.component';
 import { AddExamComponent } from './features/add-exam/add-exam.component';
+import { ListPeopleComponent } from './features/list-people/list-people.component';
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
 
 
 @NgModule({
@@ -37,7 +41,8 @@ import { AddExamComponent } from './features/add-exam/add-exam.component';
     MenuComponent,
     AddPeopleComponent,
     AddAppointmentComponent,
-    AddExamComponent
+    AddExamComponent,
+    ListPeopleComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,10 @@ import { AddExamComponent } from './features/add-exam/add-exam.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatButtonToggleModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     {
