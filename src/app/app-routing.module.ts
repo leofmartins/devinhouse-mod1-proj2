@@ -4,8 +4,14 @@ import { AddPeopleComponent } from "./features/add-people/add-people.component";
 import { AddAppointmentComponent } from "./features/add-appointment/add-appointment.component";
 import { AddExamComponent } from "./features/add-exam/add-exam.component";
 import { ListPeopleComponent } from "./features/list-people/list-people.component";
+import { HomePageComponent } from "./features/home-page/home-page.component";
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomePageComponent,
+    title: 'LABMedical - Home Page'
+  },
   {
     path: 'add-people',
     component: AddPeopleComponent,

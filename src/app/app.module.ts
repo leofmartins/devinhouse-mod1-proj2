@@ -33,6 +33,7 @@ import { ListPeopleComponent } from './features/list-people/list-people.componen
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
+import { HomePageComponent } from './features/home-page/home-page.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MatSortModule } from "@angular/material/sort";
     AddPeopleComponent,
     AddAppointmentComponent,
     AddExamComponent,
-    ListPeopleComponent
+    ListPeopleComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
