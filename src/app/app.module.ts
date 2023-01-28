@@ -34,6 +34,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { HomePageComponent } from './features/home-page/home-page.component';
+import { MatGridListModule } from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { HomePageComponent } from './features/home-page/home-page.component';
     MatMomentDateModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
   providers: [
     {
