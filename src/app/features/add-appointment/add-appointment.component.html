@@ -1,4 +1,4 @@
-<form >
+<form [formGroup]="addAppointmentForm" novalidate>
   <mat-card class="add-appointment-card">
     <mat-card-actions class="add-form-button-group">
       <mat-slide-toggle>Editar</mat-slide-toggle>
@@ -32,14 +32,14 @@
         <div class="col">
           <mat-form-field appearance="fill">
             <mat-label>Hora da consulta</mat-label>
-            <input matInput type="time">
+            <input type="time" matInput formControlName="time">
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <mat-form-field class="full-width">
           <mat-label>Descrição do Problema</mat-label>
-          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
+          <textarea matInput placeholder="Informe a descrição do problema..." formControlName="description"></textarea>
           <mat-error *ngIf="addAppointmentForm.controls['description'].hasError('required')">
             A descrição é <strong>obrigatória</strong>
           </mat-error>
@@ -48,13 +48,13 @@
       <div class="row">
         <mat-form-field class="full-width">
           <mat-label>Medicação Receita</mat-label>
-          <textarea matInput placeholder="Informe a descrição do problema..."></textarea>
+          <textarea cols="30" rows="5" matInput placeholder="Informe a descrição do problema..." formControlName="medicatoin"></textarea>
         </mat-form-field>
       </div>
       <div class="row">
         <mat-form-field class="full-width">
           <mat-label>Dosagem e precauções</mat-label>
-          <textarea matInput placeholder="Informe a detalhes da dosagem e precauções..."></textarea>
+          <textarea cols="30" rows="5" matInput placeholder="Informe a detalhes da dosagem e precauções..." formControlName="precaution"></textarea>
           <mat-error *ngIf="addAppointmentForm.controls['precaution'].hasError('required')">
             Este campo é <strong>obrigatório</strong>
           </mat-error>
