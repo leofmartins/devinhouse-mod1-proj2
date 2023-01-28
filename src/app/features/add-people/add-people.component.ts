@@ -15,7 +15,9 @@ export class AddPeopleComponent {
     complement: [null],
     cpf: [null, Validators.required],
     editToggle: ['false', Validators.required],
-    email: [null],
+    email: [null, Validators.compose([
+      Validators.required, Validators.email
+    ])],
     emergencyContact: [null, Validators.required],
     gender: [null, Validators.required],
     healthCareNumber: [null],

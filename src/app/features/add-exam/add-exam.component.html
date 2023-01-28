@@ -9,7 +9,7 @@
       <mat-card-title>Exame de [Nome do Paciente]</mat-card-title>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Nome do Exame</mat-label>
             <input matInput placeholder="Informe o nome do exame" formControlName="examName">
             <mat-error *ngIf="addExamForm.controls['examName'].hasError('required')">
@@ -28,7 +28,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field appearance="fill">
+          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Data do exame</mat-label>
             <input matInput [matDatepicker]="picker">
             <mat-hint>DD/MM/YYYY</mat-hint>
@@ -40,7 +40,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Hoárário do exame</mat-label>
             <input matInput type="time">
           </mat-form-field>
@@ -48,7 +48,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Tipo de exame</mat-label>
             <input matInput placeholder="Informe o tipo do exmae" formControlName="examType">
             <mat-error *ngIf="addExamForm.controls['examTime'].hasError('required')">
@@ -67,7 +67,7 @@
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field class="full-width" appearance="outline">
             <mat-label>Laboratório</mat-label>
             <input matInput placeholder="Informe o laboratório" formControlName="labName">
             <mat-error
@@ -84,14 +84,14 @@
         </div>
       </div>
       <div class="row">
-        <mat-form-field class="col">
+        <mat-form-field class="full-width" appearance="outline">
           <mat-label>URL do documento do exame</mat-label>
           <input type="url" matInput formControlName="reportUrl">
         </mat-form-field>
       </div>
       <div class="row">
         <div class="col">
-          <mat-form-field class="full-width">
+          <mat-form-field class="full-width" appearance="outline">
             <textarea cols="30" rows="10" matInput placeholder="Informe os resultados..." formControlName="results"></textarea>
             <mat-error *ngIf="addExamForm.controls['results'].hasError('required')">
               O resultado é <strong>obriatório</strong>
