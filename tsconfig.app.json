@@ -3,7 +3,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@services/people-service": ["src/app/core/services/people.service.ts"],
+      "@shared/interfaces": ["src/app/shared/interfaces/interfaces.ts"]
+    }
   },
   "files": [
     "src/main.ts"

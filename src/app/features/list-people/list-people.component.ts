@@ -2,8 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { People, Person } from "../../shared/interfaces/interfaces";
-import { PeopleService } from "../../core/services/people.service";
+import { People, Person } from "@shared/interfaces";
+import { PeopleService } from "@services/people-service";
 
 @Component({
   selector: 'lab-list-people',

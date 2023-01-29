@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { People } from "../../shared/interfaces/interfaces";
-import { PeopleService } from "../../core/services/people.service";
+import { People } from "@shared/interfaces";
+import { PeopleService } from "@services/people-service";
 
 @Component({
   selector: 'lab-home-page',
