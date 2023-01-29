@@ -1,7 +1,7 @@
 <div class="container">
   <div class="item">
-    <mat-card>
-      <mat-card-content>
+    <mat-card class="stats-card">
+      <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/conference-call.png" alt="people icon">
         <p>70</p>
       </mat-card-content>
@@ -11,8 +11,8 @@
     </mat-card>
   </div>
   <div class="item">
-    <mat-card>
-      <mat-card-content>
+    <mat-card class="stats-card">
+      <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/stethoscope.png" alt="appointment icon">
         <p>104</p>
       </mat-card-content>
@@ -22,8 +22,8 @@
     </mat-card>
   </div>
   <div class="item">
-    <mat-card>
-      <mat-card-content>
+    <mat-card class="stats-card">
+      <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/treatment-list.png" alt="exam icon">
         <p>82</p>
       </mat-card-content>
@@ -33,3 +33,13 @@
     </mat-card>
   </div>
 </div>
+<mat-card>
+  <mat-card-content>
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Digite o nome do paciente</mat-label>
+        <input matInput placeholder="Para procurar, digite o nome do paciente..." #input>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+</mat-card>

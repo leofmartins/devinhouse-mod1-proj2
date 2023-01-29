@@ -4,7 +4,7 @@
   justify-content: space-around;
 }
 
-mat-card {
+mat-card.stats-card {
   min-width: 390px;
   min-height: 150px;
   margin: 20px;
@@ -13,7 +13,7 @@ mat-card {
   align-items: center;
 }
 
-mat-card-content {
+mat-card-content.stat-card-content {
   display: flex;
   align-items: center;
   font-size: 70px;
@@ -24,6 +24,11 @@ card-content {
   display: flex;
 }
 
-/*card-icon {*/
-/*  background-image: url("https://img.icons8.com/material-outlined/96/null/conference-call.png");*/
-/*}*/
+.full-width {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
