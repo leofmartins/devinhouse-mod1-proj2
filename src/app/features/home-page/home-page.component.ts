@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { People } from "@shared/interfaces";
 import { PeopleService } from "@services/people-service";
 
@@ -7,10 +7,13 @@ import { PeopleService } from "@services/people-service";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   people: People = [];
 
   constructor(private peopleService: PeopleService) {
+  }
+
+  ngOnInit() {
     this.peopleService.getPeople()
       .subscribe(people => this.people = people);
   }

@@ -41,7 +41,9 @@
     <input matInput placeholder="Para procurar, digite o nome do paciente..." #input>
   </mat-form-field>
 </div>
-
+<div *ngIf="people.length === 0" class="spinner">
+  <mat-spinner></mat-spinner>
+</div>
 <div class="people-card-container">
   <div class="people-detail-card-container"
        *ngFor="let person of people">
