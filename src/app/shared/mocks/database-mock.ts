@@ -1,6 +1,6 @@
 import { Person, User } from "src/app/shared/interfaces/interfaces";
 
-export const PERSONS: Person[] = [
+export const PEOPLE: Person[] = [
   {
     "id": "31af5b68-3b50-4aea-8841-f6735ca01e08",
     "seqId": '0001',

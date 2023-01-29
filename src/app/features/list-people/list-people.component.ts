@@ -2,8 +2,8 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { PERSONS } from "src/app/shared/mocks/database-mock";
 import { Person } from "../../shared/interfaces/interfaces";
+import { DatabaseService } from "../../shared/services/database.service";
 
 @Component({
   selector: 'lab-list-people',
@@ -11,14 +11,18 @@ import { Person } from "../../shared/interfaces/interfaces";
   styleUrls: ['./list-people.component.css']
 })
 export class ListPeopleComponent implements AfterViewInit {
+
+  people: Person[] = [];
   displayedColumns: string[] = ['seqId', 'name', 'healthInsurance'];
   dataSource: MatTableDataSource<Person>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-   this.dataSource = new MatTableDataSource(PERSONS);
+  constructor(private databaseService: DatabaseService) {
+    this.databaseService.getPeople()
+      .subscribe(people => this.people = people);
+    this.dataSource = new MatTableDataSource(this.people);
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
