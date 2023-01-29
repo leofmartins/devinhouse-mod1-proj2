@@ -30,7 +30,10 @@ const routes: Routes = [
     path: 'list-people',
     component: ListPeopleComponent,
     title: 'LABMedical - Lista de Prontuários'
-  }
+  },{
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'}
 ];
 
 @NgModule({
