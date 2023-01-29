@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { People } from "../../shared/interfaces/interfaces";
-import { DatabaseService } from "../../shared/services/database.service";
+import { PeopleService } from "../../core/services/people.service";
 
 @Component({
   selector: 'lab-home-page',
@@ -10,8 +10,8 @@ import { DatabaseService } from "../../shared/services/database.service";
 export class HomePageComponent {
   people: People = [];
 
-  constructor(private databaseService: DatabaseService) {
-    this.databaseService.getPeople()
+  constructor(private peopleService: PeopleService) {
+    this.peopleService.getPeople()
       .subscribe(people => this.people = people);
   }
 }

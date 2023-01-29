@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { People, Person } from "../../shared/interfaces/interfaces";
-import { DatabaseService } from "../../shared/services/database.service";
+import { PeopleService } from "../../core/services/people.service";
 
 @Component({
   selector: 'lab-list-people',
@@ -19,8 +19,8 @@ export class ListPeopleComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private databaseService: DatabaseService) {
-    this.databaseService.getPeople()
+  constructor(private peopleService: PeopleService) {
+    this.peopleService.getPeople()
       .subscribe(people => this.people = people);
     this.dataSource = new MatTableDataSource(this.people);
   }
