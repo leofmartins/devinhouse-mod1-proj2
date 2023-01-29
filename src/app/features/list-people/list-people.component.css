@@ -23,3 +23,7 @@ td, th {
 .row-clicked {
     font-weight: bold;
 }
+
+mat-spinner {
+  margin: auto;
+}

@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
+
 
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MenuComponent } from './shared/menu/menu.component';
@@ -35,6 +37,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { HomePageComponent } from './features/home-page/home-page.component';
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 
 @NgModule({
@@ -71,7 +74,9 @@ import { MatGridListModule } from "@angular/material/grid-list";
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatGridListModule
+    MatGridListModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {

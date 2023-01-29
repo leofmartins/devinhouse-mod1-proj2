@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from "rxjs";
-import { People } from "../../shared/interfaces/interfaces";
-import { PEOPLE } from "../../shared/mocks/database-mock";
+import { Observable } from "rxjs";
+import { People } from "@shared/interfaces";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
+  private peopleUrl = 'http://localhost:3000/people';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getPeople(): Observable<People> {
-    return of(PEOPLE);
+    return this.http.get<People>(this.peopleUrl);
   }
 }

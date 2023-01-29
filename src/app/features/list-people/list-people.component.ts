@@ -14,15 +14,17 @@ export class ListPeopleComponent implements AfterViewInit {
 
   people: People = [];
   displayedColumns: string[] = ['seqId', 'name', 'healthInsurance'];
-  dataSource: MatTableDataSource<Person>;
+  dataSource!: MatTableDataSource<Person>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private peopleService: PeopleService) {
     this.peopleService.getPeople()
-      .subscribe(people => this.people = people);
-    this.dataSource = new MatTableDataSource(this.people);
+      .subscribe(people => {
+        this.people = people;
+        this.dataSource = new MatTableDataSource(people);
+      });
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

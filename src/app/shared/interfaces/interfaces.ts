@@ -1,5 +1,5 @@
 interface Appointment {
-  appointmentTime: Date;
+  appointmentTime: string;
   dosageAndPrecaution: string;
   healthProblemDescription: string;
   prescriptionMedication?: string
@@ -9,7 +9,7 @@ interface Appointment {
 interface Exam {
   documentUrl?: string;
   examName: string;
-  examTime: Date;
+  examTime: string;
   examType: string;
   labName: string;
   results: string;
@@ -31,14 +31,14 @@ export interface Person {
   allergyList?: string;
   appointment: Appointment[];
   birthTown: string;
-  birthdate: Date;
+  birthdate: string;
   cpf: string;
   email?: string;
   emergencyContact: string;
   exams: Exam[];
   gender: string;
   healthInsurance?: string;
-  healthInsuranceExpirationDate?: Date;
+  healthInsuranceExpirationDate?: string;
   healthInsuranceNumber?: string;
   maritalState: string;
   name: string;
