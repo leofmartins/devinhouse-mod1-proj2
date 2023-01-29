@@ -1,14 +1,19 @@
 table {
-    width: 100%;
+  width: 100%;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
+  font-size: 14px;
+  width: 100%;
+}
+
+.list-people-card {
+  min-width: 120px;
+  margin: 10px;
 }
 
 td, th {
