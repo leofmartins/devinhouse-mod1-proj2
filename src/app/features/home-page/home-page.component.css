@@ -1,13 +1,14 @@
-.container {
+.stats {
   display: flex;
+  flex: border-box;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 mat-card.stats-card {
-  min-width: 390px;
+  min-width: 350px;
   min-height: 150px;
-  margin: 20px;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +19,22 @@ mat-card-content.stat-card-content {
   align-items: center;
   font-size: 70px;
   font-weight: bold;
+}
+
+mat-card.person-detail-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  min-width: 220px;
+}
+
+p {
+  text-align: center;
+}
+
+mat-card.person-detail-card > mat-card-footer {
+  margin: 10px;
 }
 
 card-content {
@@ -31,4 +48,14 @@ card-content {
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.search {
+  margin: 0 10px 0 10px;
+}
+
+.people-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
