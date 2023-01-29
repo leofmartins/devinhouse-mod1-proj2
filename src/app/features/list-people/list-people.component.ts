@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { Person } from "../../shared/interfaces/interfaces";
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { People, Person } from "../../shared/interfaces/interfaces";
 import { DatabaseService } from "../../shared/services/database.service";
 
 @Component({
@@ -12,7 +12,7 @@ import { DatabaseService } from "../../shared/services/database.service";
 })
 export class ListPeopleComponent implements AfterViewInit {
 
-  people: Person[] = [];
+  people: People = [];
   displayedColumns: string[] = ['seqId', 'name', 'healthInsurance'];
   dataSource: MatTableDataSource<Person>;
 
