@@ -4,7 +4,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/conference-call.png" alt="people icon">
-        <p>70</p>
+        <p>{{ getPeopleLength() }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Pacientes</mat-card-title>
@@ -15,7 +15,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/stethoscope.png" alt="appointment icon">
-        <p>56</p>
+        <p>{{ getAppointMentCount() }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Consultas</mat-card-title>
@@ -26,7 +26,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/treatment-list.png" alt="exam icon">
-        <p>82</p>
+        <p>{{ getExamsCount() }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Exames</mat-card-title>
@@ -41,7 +41,7 @@
     <input matInput placeholder="Para procurar, digite o nome do paciente..." #input>
   </mat-form-field>
 </div>
-<div *ngIf="people.length === 0" class="spinner">
+<div *ngIf="!people" class="spinner">
   <mat-spinner></mat-spinner>
 </div>
 <div class="people-card-container">
