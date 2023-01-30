@@ -48,12 +48,16 @@
   <div class="people-detail-card-container"
        *ngFor="let person of people">
     <mat-card class="person-detail-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="card-icon">person</mat-icon>
+      </mat-card-header>
       <mat-card-content>
         <mat-card-title class="person-detail-card-title">
           {{ person.name }}
         </mat-card-title>
         <p>30 anos</p>
         <p>{{ person.phoneNumber}}</p>
+        <p>{{ person.healthInsurance }}</p>
       </mat-card-content>
       <mat-card-footer>
         <a href="#">Ver mais</a>

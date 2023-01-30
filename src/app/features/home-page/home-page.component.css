@@ -35,7 +35,7 @@ mat-card-content.stat-card-content {
 }
 
 mat-card.person-detail-card {
-  min-height: 256px;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,10 +68,16 @@ card-content {
 
 .person-detail-card-title {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   margin: 10px;
 }
 
 h2 {
   margin-left: 10px;
+}
+
+.card-icon {
+  display: flex;
+  justify-content: center;
+  border: black solid 2px;
 }
