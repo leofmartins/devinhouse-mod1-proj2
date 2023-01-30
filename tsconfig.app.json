@@ -6,7 +6,7 @@
     "types": [],
     "paths": {
       "@services/people-service": ["src/app/core/services/people.service.ts"],
-      "@shared/interfaces": ["src/app/shared/interfaces/interfaces.ts"]
+      "@shared/interfaces": ["src/app/core/interfaces/interfaces.ts"]
     }
   },
   "files": [

@@ -8,7 +8,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MenuComponent } from './shared/menu/menu.component';
+import { MenuComponent } from './core/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

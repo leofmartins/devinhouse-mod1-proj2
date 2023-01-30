@@ -6,38 +6,47 @@ import { AddExamComponent } from "./features/add-exam/add-exam.component";
 import { ListPeopleComponent } from "./features/list-people/list-people.component";
 import { HomePageComponent } from "./features/home-page/home-page.component";
 import { LoginPageComponent } from "./features/login-page/login-page.component";
+import { MenuComponent } from "./core/menu/menu.component";
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomePageComponent,
-    title: 'LABMedical - Home Page'
-  },
-  {
-    path: 'add-people',
-    component: AddPeopleComponent,
-    title: 'LABMedical - Cadastro de Paciente'
-  },
-  {
-    path: 'add-appointment',
-    component: AddAppointmentComponent,
-    title: 'LABMedical - Cadastro de Consulta'
-  },
-  {
-    path: 'add-exam',
-    component: AddExamComponent,
-    title: 'LABMEdical - Cadastro de Exame'
-  },{
-    path: 'list-people',
-    component: ListPeopleComponent,
-    title: 'LABMedical - Lista de Prontuários'
-  },{
-    path: '/login',
-    component: LoginPageComponent
-  },{
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'}
+    component: MenuComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomePageComponent,
+        title: 'LABMedical - Home Page'
+      },
+      {
+        path: 'add-people',
+        component: AddPeopleComponent,
+        title: 'LABMedical - Cadastro de Paciente'
+      },
+      {
+        path: 'add-appointment',
+        component: AddAppointmentComponent,
+        title: 'LABMedical - Cadastro de Consulta'
+      },
+      {
+        path: 'add-exam',
+        component: AddExamComponent,
+        title: 'LABMEdical - Cadastro de Exame'
+      },{
+        path: 'list-people',
+        component: ListPeopleComponent,
+        title: 'LABMedical - Lista de Prontuários'
+      },{
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  }
 ];
 
 @NgModule({
