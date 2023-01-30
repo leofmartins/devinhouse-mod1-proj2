@@ -29,9 +29,7 @@ export class AddPeopleComponent {
     name: [null, Validators.compose([
       Validators.required, Validators.minLength(8), Validators.maxLength(64)
     ])],
-    neighborhood: [null, Validators.compose([
-      Validators.required, Validators.minLength(8), Validators.maxLength(64)
-    ])],
+    neighborhood: [null, Validators.required],
     phoneNumber: [null, Validators.required],
     postalCode: [null, Validators.compose([
       Validators.required, Validators.minLength(8), Validators.maxLength(8)])

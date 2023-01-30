@@ -203,9 +203,6 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Bairro</mat-label>
             <input matInput placeholder="Informe o bairro" formControlName="neighborhood" [(ngModel)]="address.bairro">
-            <mat-error *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
-              O bairro é <strong>obrigatório</strong>
-            </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
