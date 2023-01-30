@@ -38,6 +38,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { HomePageComponent } from './features/home-page/home-page.component';
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { LoginPageComponent } from './features/login-page/login-page.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     AddAppointmentComponent,
     AddExamComponent,
     ListPeopleComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

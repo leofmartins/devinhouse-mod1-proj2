@@ -5,6 +5,7 @@ import { AddAppointmentComponent } from "./features/add-appointment/add-appointm
 import { AddExamComponent } from "./features/add-exam/add-exam.component";
 import { ListPeopleComponent } from "./features/list-people/list-people.component";
 import { HomePageComponent } from "./features/home-page/home-page.component";
+import { LoginPageComponent } from "./features/login-page/login-page.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,9 @@ const routes: Routes = [
     path: 'list-people',
     component: ListPeopleComponent,
     title: 'LABMedical - Lista de Prontuários'
+  },{
+    path: '/login',
+    component: LoginPageComponent
   },{
     path: '',
     redirectTo: 'home',
