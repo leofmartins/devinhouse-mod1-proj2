@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ViacepService } from "./services/viacep.service";
+import { ViaCep } from "@shared/interfaces";
 
 @Component({
   selector: 'lab-add-people',
@@ -54,9 +56,32 @@ export class AddPeopleComponent {
     'Viúvo(a)'
   ]
 
-  constructor(private fb: FormBuilder) {}
+  address: ViaCep = {
+    cep: "",
+    logradouro: "",
+    complemento: "",
+    bairro: "",
+    localidade: "",
+    uf: "",
+    ibge: "",
+    gia: "",
+    ddd: "",
+    siafi: ""
+  }
+
+  constructor(private fb: FormBuilder, private viaCepService: ViacepService) {}
 
   onSubmit(): void {
     alert('Thanks!');
+  }
+
+  getAdressFromViaCep(cep: string) {
+    if (cep !== "") {
+      let validateCep = /^[0-9]{8}$/;
+      if (validateCep.test(cep)) {
+        this.viaCepService.getAdress(cep)
+          .subscribe(adress => this.address = adress);
+      }
+    }
   }
 }

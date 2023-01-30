@@ -147,7 +147,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>CEP</mat-label>
-            <input matInput placeholder="Informe o CEP" formControlName="postalCode">
+            <input matInput placeholder="Informe o CEP" formControlName="postalCode" (focusout)="getAdressFromViaCep(cep.value)" #cep>
             <mat-error *ngIf="addPeopleForm.controls['postalCode'].hasError('required')">
               O CEP é <strong>obrigatório</strong>
             </mat-error>
@@ -156,7 +156,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Cidade</mat-label>
-            <input matInput placeholder="Informe a Cidade" formControlName="town">
+            <input matInput placeholder="Informe a Cidade" formControlName="town" [(ngModel)]="address.localidade">
             <mat-error *ngIf="addPeopleForm.controls['town'].hasError('required')">
               A cidade é <strong>obrigatório</strong>
             </mat-error>
@@ -165,7 +165,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Estado</mat-label>
-            <input matInput placeholder="Informe o Estado" formControlName="state">
+            <input matInput placeholder="Informe o Estado" formControlName="state" [(ngModel)]="address.uf">
             <mat-error *ngIf="addPeopleForm.controls['state'].hasError('required')">
               O Estado é <strong>obrigatório</strong>
             </mat-error>
@@ -176,7 +176,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Logradouro</mat-label>
-            <input matInput placeholder="Informe o nome da rua" formControlName="street">
+            <input matInput placeholder="Informe o nome da rua" formControlName="street" [(ngModel)]="address.logradouro">
             <mat-error *ngIf="addPeopleForm.controls['street'].hasError('required')">
               A rua é <strong>obrigatório</strong>
             </mat-error>
@@ -202,7 +202,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Bairro</mat-label>
-            <input matInput placeholder="Informe o bairro" formControlName="neighborhood">
+            <input matInput placeholder="Informe o bairro" formControlName="neighborhood" [(ngModel)]="address.bairro">
             <mat-error *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
               O bairro é <strong>obrigatório</strong>
             </mat-error>
