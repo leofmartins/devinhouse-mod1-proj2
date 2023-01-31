@@ -8,6 +8,7 @@ import { HomePageComponent } from "./features/home-page/home-page.component";
 import { LoginPageComponent } from "./features/login-page/login-page.component";
 import { MenuComponent } from "./core/menu/menu.component";
 import { AuthGuard } from "./core/guards/auth.guard";
+import { LoggedinGuard } from "./core/guards/loggedin.guard";
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate: [LoggedinGuard]
   }
 ];
 
