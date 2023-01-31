@@ -7,11 +7,13 @@ import { ListPeopleComponent } from "./features/list-people/list-people.componen
 import { HomePageComponent } from "./features/home-page/home-page.component";
 import { LoginPageComponent } from "./features/login-page/login-page.component";
 import { MenuComponent } from "./core/menu/menu.component";
+import { AuthGuard } from "./core/guards/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
     component: MenuComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
