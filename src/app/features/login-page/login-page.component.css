@@ -1,0 +1,81 @@
+.login-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 3;
+}
+
+.right-side {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 2;
+  border-left: solid darkblue 2px;
+}
+
+.left-side-header {
+  height: 80px;
+}
+
+.left-side-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.cover {
+  height: 400px;
+}
+
+.labmedical-logo {
+  height: 50px;
+}
+
+.lab365-logo {
+  width: 100px;
+  height: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+  margin: 0 20px;
+}
+.right-side header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 10px;
+  margin: 10px;
+}
+
+.right-side footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+}
