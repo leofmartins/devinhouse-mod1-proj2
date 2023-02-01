@@ -15,15 +15,29 @@
       <p>Não possui uma conta?</p>
       <button mat-stroked-button color="primary">Criar conta</button>
     </header>
-    <form class="form">
+    <form [formGroup]="loginForm" novalidate class="form">
       <h2 class="mat-title">Login</h2>
         <mat-form-field class="row" appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input matInput type="email" class="full-width">
+          <input matInput placeholder="Ex. alex@email.com" formControlName="email" type="email" class="full-width">
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+            E-mail obrigatório
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email')
+                     && !loginForm.controls['email'].hasError('required')">
+            Digite um e-mail vádilo (Ex. alex@email.com)
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="row" appearance="outline">
           <mat-label>Senha</mat-label>
-          <input matInput type="password" class="full-width">
+          <input matInput placeholder="Informe sua senha" formControlName="password" type="password" class="full-width">
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+            Informe sua senha
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')
+                     && !loginForm.controls['password'].hasError('required')">
+            A senha deve conter pelo menos <strong>8 caracteres</strong>
+          </mat-error>
         </mat-form-field>
       <div class="login-button">
         <button mat-raised-button color="primary">Entrar</button>
