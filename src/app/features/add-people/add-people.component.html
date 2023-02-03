@@ -8,8 +8,8 @@
       </mat-card-header>
       <mat-card-content>
         <mat-card-actions class="add-form-button-group">
-          <mat-slide-toggle>Editar</mat-slide-toggle>
-          <button mat-stroked-button color="warn">DELETAR</button>
+          <mat-slide-toggle [checked]="editing" disabled>Editar</mat-slide-toggle>
+          <button mat-stroked-button color="warn" [disabled]="!editing">DELETAR</button>
           <button mat-raised-button color="primary">SALVAR</button>
         </mat-card-actions>
         <mat-card-title>Identificação</mat-card-title>

@@ -43,6 +43,9 @@ const routes: Routes = [
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
+      },{
+        path: 'edit/:id',
+        component: AddPeopleComponent
       }
     ]
   },

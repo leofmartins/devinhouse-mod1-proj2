@@ -13,7 +13,8 @@ export class AddPeopleComponent implements OnInit {
   addPeopleForm!: FormGroup;
   id?: string;
   title!: string;
-  loading = true;
+  editing = false;
+  loading = false;
   submmited = false;
   submmiting = false;
 
@@ -87,6 +88,7 @@ export class AddPeopleComponent implements OnInit {
 
     if (this.id) {
       this.title = `Editando o cadastro de [Fulano]`;
+      this.editing = true;
     }
 
   }
