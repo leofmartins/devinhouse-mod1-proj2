@@ -1,5 +1,8 @@
 <div *ngIf="!loading">
-  <form [formGroup]="addPeopleForm" novalidate (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="addPeopleForm"
+    novalidate
+    (ngSubmit)="onSubmit()">
     <mat-card class="add-people-card">
       <mat-card-header>
         <mat-card-title>
@@ -8,49 +11,84 @@
       </mat-card-header>
       <mat-card-content>
         <mat-card-actions class="add-form-button-group">
-          <mat-slide-toggle [checked]="editing" disabled>Editar</mat-slide-toggle>
-          <button mat-stroked-button color="warn" [disabled]="!editing">DELETAR</button>
-          <button mat-raised-button color="primary" type="submit" [disabled]="addPeopleForm.invalid">SALVAR</button>
+          <mat-slide-toggle
+            [checked]="editing"
+            disabled>
+            Editar
+          </mat-slide-toggle>
+          <button
+            mat-stroked-button
+            color="warn"
+            [disabled]="!editing">DELETAR</button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="addPeopleForm.invalid">
+            SALVAR
+          </button>
         </mat-card-actions>
         <mat-card-title>Identificação</mat-card-title>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Nome completo</mat-label>
-              <input matInput placeholder="Informe o nome completo do paciente" formControlName="name">
+              <input
+                matInput
+                placeholder="Informe o nome completo do paciente"
+                formControlName="name">
               <mat-error
-                *ngIf="addPeopleForm.controls['name'].hasError('minlength') && !addPeopleForm.controls['name'].hasError('required')">
+                *ngIf="addPeopleForm.controls['name'].hasError('minlength')
+                && !addPeopleForm.controls['name'].hasError('required')">
                 O nome tem de ter pelo <strong>mínimo 8 caracteres</strong>
               </mat-error>
               <mat-error
-                *ngIf="addPeopleForm.controls['name'].hasError('maxlength') && !addPeopleForm.controls['name'].hasError('required')">
+                *ngIf="addPeopleForm.controls['name'].hasError('maxlength')
+                && !addPeopleForm.controls['name'].hasError('required')">
                 O nome tem de ter no <strong>máximo 64 caracteres</strong>
               </mat-error>
-              <mat-error *ngIf="addPeopleForm.controls['name'].hasError('required')">
+              <mat-error
+                *ngIf="addPeopleForm.controls['name'].hasError('required')">
                 O nome é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-select placeholder="Selecione o gênero" formControlName="gender">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
+              <mat-select
+                placeholder="Selecione o gênero"
+                formControlName="gender">
                 <mat-option *ngFor="let gender of genders" [value]="gender">
                   {{ gender }}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="addPeopleForm.controls['gender'].hasError('required')">
+              <mat-error
+                *ngIf="addPeopleForm.controls['gender'].hasError('required')">
                 O gênero é <strong>obrigatário</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Data de nascimento</mat-label>
-              <input matInput [matDatepicker]="birthday" formControlName="birthdate">
+              <input
+                matInput
+                [matDatepicker]="birthday"
+                formControlName="birthdate">
               <mat-hint>DD/MM/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="birthday"></mat-datepicker-toggle>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="birthday"></mat-datepicker-toggle>
               <mat-datepicker #birthday></mat-datepicker>
-              <mat-error *ngIf="addPeopleForm.controls['birthdate'].hasError('required')">
+              <mat-error
+                *ngIf="addPeopleForm.controls['birthdate'].hasError('required')">
                 A data de nascimento é <strong>obrigatária</strong>
               </mat-error>
             </mat-form-field>
@@ -58,37 +96,58 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>CPF</mat-label>
-              <input matInput placeholder="000.000.000-00" formControlName="cpf" mask="000.000.000-00">
-              <mat-error *ngIf="addPeopleForm.controls['cpf'].hasError('required')">
+              <input
+                matInput
+                placeholder="000.000.000-00"
+                formControlName="cpf" mask="000.000.000-00">
+              <mat-error
+                *ngIf="addPeopleForm.controls['cpf'].hasError('required')">
                 O CPF é <strong>obrigatório</strong>
               </mat-error>
-              <mat-error *ngIf="addPeopleForm.controls['cpf'].invalid">
+              <mat-error
+                *ngIf="addPeopleForm.controls['cpf'].invalid">
                 O CPF digitado é <strong>inválido</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Identificação/Órgão expedidor/UF</mat-label>
-              <input matInput placeholder="Informe o RG" formControlName="rg">
+              <input
+                matInput
+                placeholder="Informe o RG"
+                formControlName="rg">
               <mat-error
-                *ngIf="addPeopleForm.controls['rg'].hasError('maxlength') && !addPeopleForm.controls['rg'].hasError('required')">
+                *ngIf="addPeopleForm.controls['rg'].hasError('maxlength')
+                && !addPeopleForm.controls['rg'].hasError('required')">
                 O RG deve possuir no <strong>máximo 20 caracteres</strong>
-              </mat-error><mat-error *ngIf="addPeopleForm.controls['rg'].hasError('required')">
+              </mat-error>
+              <mat-error
+                *ngIf="addPeopleForm.controls['rg'].hasError('required')">
               O RG é <strong>obrigatório</strong>
             </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
-              <mat-select placeholder="Selecione o estado civil" formControlName="maritalStatus">
-                <mat-option *ngFor="let maritalStatus of maritalStatus" [value]="maritalStatus">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
+              <mat-select
+                placeholder="Selecione o estado civil"
+                formControlName="maritalStatus">
+                <mat-option
+                  *ngFor="let maritalStatus of maritalStatus" [value]="maritalStatus">
                   {{ maritalStatus }}
                 </mat-option>
               </mat-select>
-              <mat-error *ngIf="addPeopleForm.controls['maritalStatus'].hasError('required')">
+              <mat-error
+                *ngIf="addPeopleForm.controls['maritalStatus'].hasError('required')">
                 O estado civil é <strong>obrigatário</strong>
               </mat-error>
             </mat-form-field>
@@ -96,32 +155,49 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Telefone</mat-label>
-              <input matInput placeholder="(00) 0000-0000" formControlName="phoneNumber" mask="(00) 00000-0000 || (00) 0000-0000">
-              <mat-error *ngIf="addPeopleForm.controls['phoneNumber'].hasError('required')">
+              <input
+                matInput
+                placeholder="(00) 0000-0000"
+                formControlName="phoneNumber"
+                mask="(00) 0 0000-0000 || (00) 0000-0000">
+              <mat-error
+                *ngIf="addPeopleForm.controls['phoneNumber'].hasError('required')">
                 O telefone é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>E-mail</mat-label>
-              <input matInput placeholder="Ex.: alex@email.com" formControlName="email">
-              <mat-error *ngIf="addPeopleForm.controls['email'].hasError('required')">
-                O e-mail é <strong>obrigatório</strong>
-              </mat-error>
-              <mat-error *ngIf="addPeopleForm.controls['email'].hasError('email') &&
-              !addPeopleForm.controls['email'].hasError('required')">
+              <input
+                matInput
+                placeholder="Ex.: alex@email.com"
+                formControlName="email">
+              <mat-error
+                *ngIf="addPeopleForm.controls['email'].hasError('email')">
                 Informe um e-mail válido
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Naturalidade</mat-label>
-              <input matInput placeholder="Cidade" formControlName="birthTown">
-              <mat-error *ngIf="addPeopleForm.controls['birthTown'].hasError('required')">
+              <input
+                matInput
+                placeholder="Cidade"
+                formControlName="birthTown">
+              <mat-error
+                *ngIf="addPeopleForm.controls['birthTown'].hasError('required')">
                 A naturalidade é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
@@ -129,47 +205,81 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Contato de emergência</mat-label>
-              <input matInput placeholder="(00) 00000-0000" formControlName="emergencyContact" mask="(00) 00000-0000 || (00) 0000-0000">
+              <input
+                matInput
+                placeholder="(00) 00000-0000"
+                formControlName="emergencyContact"
+                mask="(00) 0 0000-0000 || (00) 0000-0000">
               <mat-error *ngIf="addPeopleForm.controls['emergencyContact'].hasError('required')">
                 Um conta de emergência é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Lista de alergias</mat-label>
-              <input matInput placeholder="Informe eventuais alergias" formControlName="allergies">
+              <input
+                matInput
+                placeholder="Informe eventuais alergias"
+                formControlName="allergies">
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Lista de cuidados específicos</mat-label>
-              <input matInput placeholder="Informe eventuais cuidados específicos" formControlName="specialCares">
+              <input
+                matInput
+                placeholder="Informe eventuais cuidados específicos"
+                formControlName="specialCares">
             </mat-form-field>
           </div>
         </div>
         <mat-card-title>Convênio</mat-card-title>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Convênio</mat-label>
-              <input matInput placeholder="Informe o nome do convênio" formControlName="healthInsurance">
+              <input
+                matInput
+                placeholder="Informe o nome do convênio"
+                formControlName="healthInsurance">
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Número da carteira</mat-label>
-              <input matInput placeholder="Informe o nª do convênio" formControlName="healthCareNumber">
+              <input
+                matInput
+                placeholder="Informe o nª do convênio"
+                formControlName="healthCareNumber">
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field appearance="outline" class="full-width" hideRequiredMarker>
+            <mat-form-field
+              appearance="outline"
+              class="full-width"
+              hideRequiredMarker>
               <mat-label>Validade</mat-label>
-              <input matInput [matDatepicker]="validate" formControlName="healthCareValidate">
+              <input
+                matInput [matDatepicker]="validate"
+                formControlName="healthCareValidate">
               <mat-hint>DD/MM/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="validate"></mat-datepicker-toggle>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="validate"></mat-datepicker-toggle>
               <mat-datepicker #validate></mat-datepicker>
             </mat-form-field>
           </div>
@@ -177,28 +287,59 @@
         <mat-card-title>Endereço</mat-card-title>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>CEP</mat-label>
-              <input matInput placeholder="Informe o CEP" formControlName="postalCode" (focusout)="getAdressFromViaCep(cep.value)" #cep>
-              <mat-error *ngIf="addPeopleForm.controls['postalCode'].hasError('required')">
+              <input
+                matInput
+                placeholder="Informe o CEP"
+                formControlName="postalCode"
+                (focusout)="getAdressFromViaCep(cep.value)"
+                #cep
+                mask="00.000-000">
+              <mat-error
+                *ngIf="addPeopleForm.controls['postalCode'].hasError('required')">
                 O CEP é <strong>obrigatório</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="addPeopleForm.controls['postalCode'].hasError('minlength')
+                && !addPeopleForm.controls['postalCode'].hasError('required')">
+                O CEP deve conter pelo menos <strong>8 dígitos</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="addPeopleForm.controls['postalCode'].hasError('maxlength')
+                && !addPeopleForm.controls['postalCode'].hasError('required')">
+                O CEP deve conter no máximo <strong>8 dígitos</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline" hideRequiredMarker>
               <mat-label>Cidade</mat-label>
-              <input matInput placeholder="Informe a Cidade" formControlName="town">
-              <mat-error *ngIf="addPeopleForm.controls['town'].hasError('required')">
+              <input
+                matInput placeholder="Informe a Cidade"
+                formControlName="town">
+              <mat-error
+                *ngIf="addPeopleForm.controls['town'].hasError('required')">
                 A cidade é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Estado</mat-label>
-              <input matInput placeholder="Informe o Estado" formControlName="state">
-              <mat-error *ngIf="addPeopleForm.controls['state'].hasError('required')">
+              <input
+                matInput
+                placeholder="Informe o Estado"
+                formControlName="state">
+              <mat-error
+                *ngIf="addPeopleForm.controls['state'].hasError('required')">
                 O Estado é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
@@ -206,19 +347,33 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Logradouro</mat-label>
-              <input matInput placeholder="Informe o nome da rua" formControlName="street">
-              <mat-error *ngIf="addPeopleForm.controls['street'].hasError('required')">
+              <input
+                matInput
+                placeholder="Informe o nome da rua"
+                formControlName="street">
+              <mat-error
+                *ngIf="addPeopleForm.controls['street'].hasError('required')">
                 A rua é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Número</mat-label>
-              <input matInput placeholder="Informe o número" formControlName="houseNumber">
-              <mat-error *ngIf="addPeopleForm.controls['houseNumber'].hasError('required')">
+              <input
+                matInput
+                placeholder="Informe o número"
+                formControlName="houseNumber">
+              <mat-error
+                *ngIf="addPeopleForm.controls['houseNumber'].hasError('required')">
                 O número é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
@@ -226,24 +381,41 @@
         </div>
         <div class="row">
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Complemento</mat-label>
-              <input matInput placeholder="Informe um complemento" formControlName="complement">
+              <input
+                matInput
+                placeholder="Informe um complemento"
+                formControlName="complement">
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker>
+            <mat-form-field
+              class="full-width"
+              appearance="outline"
+              hideRequiredMarker>
               <mat-label>Bairro</mat-label>
-              <input matInput placeholder="Informe o bairro" formControlName="neighborhood">
-              <mat-error *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
+              <input
+                matInput
+                placeholder="Informe o bairro"
+                formControlName="neighborhood">
+              <mat-error
+                *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
                 O bairro é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
           </div>
           <div class="col">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field
+              class="full-width"
+              appearance="outline">
               <mat-label>Ponto de Rerefência</mat-label>
-              <input matInput placeholder="Informe um ponto de referência" formControlName="reference">
+              <input
+                matInput
+                placeholder="Informe um ponto de referência"
+                formControlName="reference">
             </mat-form-field>
           </div>
         </div>

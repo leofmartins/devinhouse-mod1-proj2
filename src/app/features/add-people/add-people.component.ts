@@ -56,11 +56,11 @@ export class AddPeopleComponent implements OnInit {
       complement: [null],
       cpf: ['', Validators.compose([
         Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(8),
         ValidateCPF
       ])],
-      email: [null, Validators.compose([
-        Validators.required, Validators.email
-      ])],
+      email: [null, Validators.email],
       emergencyContact: [null, Validators.required],
       gender: [null, Validators.required],
       healthCareNumber: [null],
@@ -101,6 +101,7 @@ export class AddPeopleComponent implements OnInit {
 
   getAdressFromViaCep(cep: string) {
     if (cep !== "") {
+      cep = cep.replace(/\D+/g,'')
       let validateCep = /^[0-9]{8}$/;
       if (validateCep.test(cep)) {
         this.viaCepService.getAdress(cep)
