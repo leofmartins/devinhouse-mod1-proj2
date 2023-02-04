@@ -56,8 +56,6 @@ export class AddPeopleComponent implements OnInit {
       complement: [null],
       cpf: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(8),
         ValidateCPF
       ])],
       email: [null, Validators.email],

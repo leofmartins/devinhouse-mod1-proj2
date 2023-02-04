@@ -109,7 +109,8 @@
                 O CPF é <strong>obrigatório</strong>
               </mat-error>
               <mat-error
-                *ngIf="addPeopleForm.controls['cpf'].invalid">
+                *ngIf="addPeopleForm.controls['cpf'].invalid
+                && !addPeopleForm.controls['cpf'].hasError('required')">
                 O CPF digitado é <strong>inválido</strong>
               </mat-error>
             </mat-form-field>
