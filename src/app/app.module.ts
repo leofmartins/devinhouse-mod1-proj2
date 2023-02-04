@@ -39,6 +39,7 @@ import { HomePageComponent } from './features/home-page/home-page.component';
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { LoginPageComponent } from './features/login-page/login-page.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 
 
 @NgModule({
@@ -80,14 +81,15 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
     MatGridListModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    FormsModule
+    FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
     {
       provide: MAT_DATE_LOCALE,
       useValue: 'pt-br'
     },
-
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -105,7 +107,8 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
           monthYearA11yLabel: 'MMMM YYYY',
         }
       }
-    }
+    },
+    provideNgxMask()
   ]
 })
 export class AppModule { }
