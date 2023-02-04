@@ -69,19 +69,19 @@ export class AddPeopleComponent implements OnInit {
       email: [null, Validators.email],
       emergencyContact: [null, Validators.required],
       gender: [null, Validators.required],
-      healthCareNumber: [null],
+      healthInsuranceNumber: [null],
       healthInsurance: [null],
       houseNumber: [null, Validators.required],
       maritalStatus: [null, Validators.required],
       name: [null, Validators.compose([
         Validators.required, Validators.minLength(8), Validators.maxLength(64)
       ])],
-      neighborhood: [null, Validators.required],
+      district: [null, Validators.required],
       phoneNumber: [null, Validators.required],
       postalCode: [null, Validators.compose([
         Validators.required, Validators.minLength(8), Validators.maxLength(8)])
       ],
-      reference: [null],
+      pointOfReference: [null],
       rg: [null, Validators.compose([
         Validators.required, Validators.maxLength(20)
       ])],
@@ -89,7 +89,7 @@ export class AddPeopleComponent implements OnInit {
       state: [null, Validators.required],
       street: [null, Validators.required],
       town: [null, Validators.required],
-      healthCareValidate: [null]
+      healthInsuranceExpiration: [null]
     });
 
     this.title = "Preencha os campos para cadastrar";
@@ -101,7 +101,9 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.dialog.open(ConfirmDialogComponent)
+    this.dialog.open(ConfirmDialogComponent, {
+      data: { ...this.addPeopleForm.value}
+    })
   }
 
   getAdressFromViaCep(cep: string) {

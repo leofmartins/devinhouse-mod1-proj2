@@ -266,7 +266,7 @@
               <input
                 matInput
                 placeholder="Informe o nª do convênio"
-                formControlName="healthCareNumber">
+                formControlName="healthInsuranceNumber">
             </mat-form-field>
           </div>
           <div class="col">
@@ -278,7 +278,7 @@
               <input
                 matInput
                 [matDatepicker]="validate"
-                formControlName="healthCareValidate">
+                formControlName="healthInsuranceExpiration">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle
                 matIconSuffix
@@ -403,9 +403,9 @@
               <input
                 matInput
                 placeholder="Informe o bairro"
-                formControlName="neighborhood">
+                formControlName="district">
               <mat-error
-                *ngIf="addPeopleForm.controls['neighborhood'].hasError('required')">
+                *ngIf="addPeopleForm.controls['district'].hasError('required')">
                 O bairro é <strong>obrigatório</strong>
               </mat-error>
             </mat-form-field>
@@ -418,7 +418,7 @@
               <input
                 matInput
                 placeholder="Informe um ponto de referência"
-                formControlName="reference">
+                formControlName="pointOfReference">
             </mat-form-field>
           </div>
         </div>

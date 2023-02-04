@@ -28,7 +28,7 @@ export interface Person {
     state: string;
     street: string;
   };
-  allergyList?: string;
+  allergies?: string;
   appointment: Appointment[];
   birthTown: string;
   birthdate: string;
@@ -40,11 +40,11 @@ export interface Person {
   healthInsurance?: string;
   healthInsuranceExpirationDate?: string;
   healthInsuranceNumber?: string;
-  maritalState: string;
+  maritalStatus: string;
   name: string;
   phoneNumber: string;
   rg: string;
-  specialCaresList?: string;
+  specialCares?: string;
 }
 
 export interface User {
