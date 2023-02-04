@@ -10,7 +10,7 @@
         <mat-card-actions class="add-form-button-group">
           <mat-slide-toggle [checked]="editing" disabled>Editar</mat-slide-toggle>
           <button mat-stroked-button color="warn" [disabled]="!editing">DELETAR</button>
-          <button mat-raised-button color="primary" type="submit">SALVAR</button>
+          <button mat-raised-button color="primary" type="submit" [disabled]="addPeopleForm.invalid">SALVAR</button>
         </mat-card-actions>
         <mat-card-title>Identificação</mat-card-title>
         <div class="row">
@@ -63,6 +63,9 @@
               <input matInput placeholder="000.000.000-00" formControlName="cpf">
               <mat-error *ngIf="addPeopleForm.controls['cpf'].hasError('required')">
                 O CPF é <strong>obrigatório</strong>
+              </mat-error>
+              <mat-error *ngIf="addPeopleForm.controls['cpf'].invalid">
+                O CPF digitado é <strong>inválido</strong>
               </mat-error>
             </mat-form-field>
           </div>
@@ -121,6 +124,29 @@
               <mat-error *ngIf="addPeopleForm.controls['birthTown'].hasError('required')">
                 A naturalidade é <strong>obrigatório</strong>
               </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Contato de emergência</mat-label>
+              <input matInput placeholder="(00) 00000-0000" formControlName="emergencyContact">
+              <mat-error *ngIf="addPeopleForm.controls['emergencyContact'].hasError('required')">
+                Um conta de emergência é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Lista de alergias</mat-label>
+              <input matInput placeholder="Informe eventuais alergias" formControlName="healthInsurance">
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Lista de cuidados específicos</mat-label>
+              <input matInput placeholder="Informe eventuais cuidados específicos" formControlName="healthInsurance">
             </mat-form-field>
           </div>
         </div>

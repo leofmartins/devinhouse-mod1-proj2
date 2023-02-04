@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViacepService } from "./services/viacep.service";
 import { ViaCep } from "@shared/interfaces";
 import { ActivatedRoute } from "@angular/router";
@@ -55,7 +55,10 @@ export class AddPeopleComponent implements OnInit {
       birthdate: [null, Validators.required],
       city: [null, Validators.required],
       complement: [null],
-      cpf: [null, Validators.required],
+      cpf: ['', Validators.compose([
+        Validators.required,
+        ValidateCPF
+      ])],
       editToggle: ['false', Validators.required],
       email: [null, Validators.compose([
         Validators.required, Validators.email
@@ -106,4 +109,51 @@ export class AddPeopleComponent implements OnInit {
       }
     }
   }
+}
+
+function ValidateCPF(control: AbstractControl): { [s: string]: boolean } | null {
+  if (!control) {
+    return { isValidCPF: false };
+  }
+
+  const cpf = control.value.replace(/[^\d]+/g,'');
+
+  if (cpf.length !== 11) {
+    return { isValidCPF: false };
+  }
+
+  let sum = 0;
+  let rest;
+
+  for (let i = 1; i <= 9; i++) {
+    sum = sum + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+  }
+
+  rest = (sum * 10) % 11;
+
+  if (rest === 10 || rest === 11) {
+    rest = 0;
+  }
+
+  if (rest !== parseInt(cpf.substring(9, 10))) {
+    return { isValidCPF: false };
+  }
+
+  sum = 0;
+
+  for (let i = 1; i <= 10; i++) {
+    sum = sum + parseInt(cpf.substring(i - 1, i)) * (12 - i);
+  }
+
+  rest = (sum * 10) % 11;
+
+  if (rest === 10 || rest === 11) {
+    rest = 0;
+  }
+
+  if (rest !== parseInt(cpf.substring(10, 11))) {
+    return { isValidCPF: false };
+  }
+
+  return null;
 }
