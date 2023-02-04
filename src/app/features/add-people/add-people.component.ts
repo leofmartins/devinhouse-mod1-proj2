@@ -104,7 +104,15 @@ export class AddPeopleComponent implements OnInit {
       let validateCep = /^[0-9]{8}$/;
       if (validateCep.test(cep)) {
         this.viaCepService.getAdress(cep)
-          .subscribe(adress => this.address = adress);
+          .subscribe(adress => {
+            this.address = adress
+            this.addPeopleForm.patchValue({
+              town: adress.localidade,
+              state: adress.uf,
+              street: adress.logradouro,
+              neighborhood: adress.bairro
+            })
+          });
       }
     }
   }
