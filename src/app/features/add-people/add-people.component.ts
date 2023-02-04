@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViacepService } from "./services/viacep.service";
 import { ViaCep } from "@shared/interfaces";
 import { ActivatedRoute } from "@angular/router";
@@ -102,15 +102,21 @@ export class AddPeopleComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    this.dialog.open(ConfirmDialogComponent, {
+  openDiaglog(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: { ...this.addPeopleForm.value}
-    })
-    console.log(this.addPeopleForm.value);
+    });
+
+    dialogRef.afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.onSubmit();
+        }
+      });
   }
 
-  get addFormControls() {
-    return this.addPeopleForm.get('address') as FormArray;
+  onSubmit(): void {
+    console.log(this.addPeopleForm.value);
   }
 
   getAdressFromViaCep(cep: string) {

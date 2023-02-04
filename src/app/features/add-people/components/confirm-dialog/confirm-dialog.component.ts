@@ -13,4 +13,8 @@ export class ConfirmDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Person
   ) {
   }
+
+  onReject() {
+    this.dialogRef.close();
+  }
 }

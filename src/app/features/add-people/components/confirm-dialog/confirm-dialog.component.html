@@ -7,25 +7,25 @@
   <p><strong>RG com órgão expedidor: </strong>{{ data.rg }}</p>
   <p><strong>Estado civil: </strong>{{ data.maritalStatus }}</p>
   <p><strong>Telefone: </strong>{{ data.phoneNumber | phone }}</p>
-  <p><strong>E-mail: </strong>{{ data.email }}</p>
+  <p *ngIf="data.email"><strong>E-mail: </strong>{{ data.email }}</p>
   <p><strong>Naturalidade: </strong>{{ data.birthTown }}</p>
   <p><strong>Contato de emergÊncia: </strong>{{ data.emergencyContact | phone }}</p>
-  <p><strong>Lista de alergias: </strong>{{ data.allergies }}</p>
-  <p><strong>Lista de cuidados Específicos: </strong>{{ data.specialCares }}</p>
-  <p><strong>Convênio: </strong>{{ data.healthInsurance }}</p>
-  <p><strong>Número do convênio: </strong>{{ data.healthInsuranceNumber }}</p>
-  <p><strong>Validade do convênio: </strong>{{ data.healthInsuranceExpiration | date : 'shortDate' : '' : 'pt-BR' }}</p>
+  <p *ngIf="data.allergies"><strong>Lista de alergias: </strong>{{ data.allergies }}</p>
+  <p *ngIf="data.specialCares"><strong>Lista de cuidados Específicos: </strong>{{ data.specialCares }}</p>
+  <p *ngIf="data.healthInsurance"><strong>Convênio: </strong>{{ data.healthInsurance }}</p>
+  <p *ngIf="data.healthInsuranceNumber"><strong>Número do convênio: </strong>{{ data.healthInsuranceNumber }}</p>
+  <p *ngIf="data.healthInsuranceExpiration"><strong>Validade do convênio: </strong>{{ data.healthInsuranceExpiration | date : 'shortDate' : '' : 'pt-BR' }}</p>
   <p><strong>Endereço: </strong>
     {{ data.address.street }},
     {{ data.address.houseNumber}},
-    {{ data.address.compl }},
+    <span *ngIf="data.address.compl">{{ data.address.compl }},</span>
     {{ data.address.district }},
     {{ data.address.town }},
     {{ data.address.state }},
     {{ data.address.cep | cep }},
-    {{ data.address.pointOfReferece }}</p>
+    <span *ngIf="data.address.pointOfReferece">{{ data.address.pointOfReferece }}</span></p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button color="warn">Corrigir</button>
-  <button mat-button color="primary">Confirmar</button>
+  <button mat-stroked-button color="warn" (click)="onReject()">Corrigir</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Confirmar</button>
 </div>
