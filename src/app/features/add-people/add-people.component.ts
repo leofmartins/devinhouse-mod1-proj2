@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ViacepService } from "./services/viacep.service";
 import { ViaCep } from "@shared/interfaces";
 import { ActivatedRoute } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'lab-add-people',
@@ -47,6 +49,7 @@ export class AddPeopleComponent implements OnInit {
     private fb: FormBuilder,
     private viaCepService: ViacepService,
     private rout: ActivatedRoute,
+    public dialog: MatDialog
 
   ) {
     this.today = new Date();
@@ -98,7 +101,7 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.addPeopleForm.value, this.addPeopleForm.invalid)
+    this.dialog.open(ConfirmDialogComponent)
   }
 
   getAdressFromViaCep(cep: string) {

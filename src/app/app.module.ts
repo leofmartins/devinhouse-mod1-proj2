@@ -40,6 +40,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { LoginPageComponent } from './features/login-page/login-page.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
+import { ConfirmDialogComponent } from './features/add-people/components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
     AddExamComponent,
     ListPeopleComponent,
     HomePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
     MatProgressSpinnerModule,
     FormsModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    MatDialogModule
   ],
   providers: [
     {
