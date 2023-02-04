@@ -94,7 +94,7 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    alert('Thanks!');
+    console.log(this.addPeopleForm.value)
   }
 
   getAdressFromViaCep(cep: string) {

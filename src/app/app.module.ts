@@ -42,6 +42,7 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
 
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     MenuComponent,
@@ -84,13 +85,14 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
   providers: [
     {
       provide: MAT_DATE_LOCALE,
-      useValue: 'pt-br'},
+      useValue: 'pt-br'
+    },
 
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
       deps: [MAT_DATE_LOCALE],
-    },{
+    }, {
       provide: MAT_DATE_FORMATS,
       useValue: {
         parse: {
@@ -104,7 +106,6 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
         }
       }
     }
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
