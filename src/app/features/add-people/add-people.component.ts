@@ -5,6 +5,7 @@ import { ViaCep } from "@shared/interfaces";
 import { ActivatedRoute } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dialog.component";
+import { PeopleService } from "@services/people-service";
 
 @Component({
   selector: 'lab-add-people',
@@ -49,7 +50,8 @@ export class AddPeopleComponent implements OnInit {
     private fb: FormBuilder,
     private viaCepService: ViacepService,
     private rout: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private peopleService: PeopleService
 
   ) {
     this.today = new Date();
@@ -116,7 +118,7 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.addPeopleForm.value);
+    this.peopleService.addPerson(this.addPeopleForm.value);
   }
 
   getAdressFromViaCep(cep: string) {

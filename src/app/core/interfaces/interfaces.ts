@@ -17,7 +17,6 @@ interface Exam {
 
 export interface Person {
   id: string,
-  seqId: string,
   address: {
     cep: string;
     town: string;
