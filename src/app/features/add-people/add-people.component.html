@@ -278,6 +278,7 @@
               <input
                 matInput
                 [matDatepicker]="validate"
+                [min]="today"
                 formControlName="healthInsuranceExpiration">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle
