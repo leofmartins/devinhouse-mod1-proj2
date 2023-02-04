@@ -20,7 +20,7 @@ export interface Person {
   seqId: string,
   address: {
     cep: string;
-    city: string;
+    town: string;
     compl?: string;
     district: string;
     houseNumber: string;
@@ -30,7 +30,7 @@ export interface Person {
   };
   allergies?: string;
   appointment: Appointment[];
-  birthTown: string;
+  birthTown: Date;
   birthdate: string;
   cpf: string;
   email?: string;
@@ -38,7 +38,7 @@ export interface Person {
   exams: Exam[];
   gender: string;
   healthInsurance?: string;
-  healthInsuranceExpirationDate?: string;
+  healthInsuranceExpiration?: Date;
   healthInsuranceNumber?: string;
   maritalStatus: string;
   name: string;

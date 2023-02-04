@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
-
+import { CommonModule } from '@angular/common';
+import { registerLocaleData } from "@angular/common";
+import localePT from "@angular/common/locales/pt";
 
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MenuComponent } from './core/menu/menu.component';
@@ -43,6 +45,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { ConfirmDialogComponent } from './features/add-people/components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 
+registerLocaleData(localePT);
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -61,6 +64,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     MatSlideToggleModule,
     LayoutModule,
     MatToolbarModule,
@@ -90,6 +94,10 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatDialogModule
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-br'
+    },
     {
       provide: MAT_DATE_LOCALE,
       useValue: 'pt-br'

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViacepService } from "./services/viacep.service";
 import { ViaCep } from "@shared/interfaces";
 import { ActivatedRoute } from "@angular/router";
@@ -58,10 +58,21 @@ export class AddPeopleComponent implements OnInit {
   ngOnInit() {
     this.id = this.rout.snapshot.params['id'];
     this.addPeopleForm = this.fb.group({
+      address: this.fb.group({
+        cep: [null, Validators.compose([
+          Validators.required, Validators.minLength(8), Validators.maxLength(8)])
+        ],
+        state: [null, Validators.required],
+        street: [null, Validators.required],
+        houseNumber: [null, Validators.required],
+        town: [null, Validators.required],
+        compl: [null],
+        district: [null, Validators.required],
+        pointOfReference: [null]
+      }),
       allergies: [null],
       birthTown: [null, Validators.required],
-      birthday: [null, Validators.required],
-      complement: [null],
+      birthdate: [null, Validators.required],
       cpf: ['', Validators.compose([
         Validators.required,
         ValidateCPF
@@ -71,24 +82,15 @@ export class AddPeopleComponent implements OnInit {
       gender: [null, Validators.required],
       healthInsuranceNumber: [null],
       healthInsurance: [null],
-      houseNumber: [null, Validators.required],
       maritalStatus: [null, Validators.required],
       name: [null, Validators.compose([
         Validators.required, Validators.minLength(8), Validators.maxLength(64)
       ])],
-      district: [null, Validators.required],
       phoneNumber: [null, Validators.required],
-      postalCode: [null, Validators.compose([
-        Validators.required, Validators.minLength(8), Validators.maxLength(8)])
-      ],
-      pointOfReference: [null],
       rg: [null, Validators.compose([
         Validators.required, Validators.maxLength(20)
       ])],
       specialCares: [null],
-      state: [null, Validators.required],
-      street: [null, Validators.required],
-      town: [null, Validators.required],
       healthInsuranceExpiration: [null]
     });
 
@@ -104,6 +106,11 @@ export class AddPeopleComponent implements OnInit {
     this.dialog.open(ConfirmDialogComponent, {
       data: { ...this.addPeopleForm.value}
     })
+    console.log(this.addPeopleForm.value);
+  }
+
+  get addFormControls() {
+    return this.addPeopleForm.get('address') as FormArray;
   }
 
   getAdressFromViaCep(cep: string) {
@@ -115,10 +122,12 @@ export class AddPeopleComponent implements OnInit {
           .subscribe(adress => {
             this.address = adress
             this.addPeopleForm.patchValue({
-              town: adress.localidade,
-              state: adress.uf,
-              street: adress.logradouro,
-              neighborhood: adress.bairro
+              address: {
+                town: adress.localidade,
+                state: adress.uf,
+                street: adress.logradouro,
+                district: adress.bairro
+              }
             })
           });
       }
