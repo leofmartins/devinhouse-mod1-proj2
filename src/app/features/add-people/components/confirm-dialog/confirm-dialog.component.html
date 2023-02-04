@@ -3,13 +3,13 @@
   <p><strong>Nome completo: </strong>{{ data.name }}</p>
   <p><strong>Gênero: </strong>{{ data.gender }}</p>
   <p><strong>Data de nascimento: </strong>{{ data.birthdate | date : 'shortDate': '': 'pt-BR'}}</p>
-  <p><strong>CPF: </strong>{{ data.cpf }}</p>
+  <p><strong>CPF: </strong>{{ data.cpf | cpf }}</p>
   <p><strong>RG com órgão expedidor: </strong>{{ data.rg }}</p>
   <p><strong>Estado civil: </strong>{{ data.maritalStatus }}</p>
-  <p><strong>Telefone: </strong>{{ data.phoneNumber }}</p>
+  <p><strong>Telefone: </strong>{{ data.phoneNumber | phone }}</p>
   <p><strong>E-mail: </strong>{{ data.email }}</p>
   <p><strong>Naturalidade: </strong>{{ data.birthTown }}</p>
-  <p><strong>Contato de emergÊncia: </strong>{{ data.emergencyContact }}</p>
+  <p><strong>Contato de emergÊncia: </strong>{{ data.emergencyContact | phone }}</p>
   <p><strong>Lista de alergias: </strong>{{ data.allergies }}</p>
   <p><strong>Lista de cuidados Específicos: </strong>{{ data.specialCares }}</p>
   <p><strong>Convênio: </strong>{{ data.healthInsurance }}</p>
@@ -22,7 +22,7 @@
     {{ data.address.district }},
     {{ data.address.town }},
     {{ data.address.state }},
-    {{ data.address.cep }},
+    {{ data.address.cep | cep }},
     {{ data.address.pointOfReferece }}</p>
 </div>
 <div mat-dialog-actions>

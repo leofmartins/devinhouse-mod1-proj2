@@ -44,6 +44,9 @@ import { LoginPageComponent } from './features/login-page/login-page.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { ConfirmDialogComponent } from './features/add-people/components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
+import { CpfPipe } from './features/add-people/pipes/cpf.pipe';
+import { PhonePipe } from './features/add-people/pipes/phone.pipe';
+import { CepPipe } from './features/add-people/pipes/cep.pipe';
 
 registerLocaleData(localePT);
 
@@ -58,7 +61,10 @@ registerLocaleData(localePT);
     ListPeopleComponent,
     HomePageComponent,
     LoginPageComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CpfPipe,
+    PhonePipe,
+    CepPipe
   ],
   imports: [
     BrowserModule,
