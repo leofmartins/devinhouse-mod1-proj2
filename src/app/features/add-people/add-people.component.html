@@ -80,15 +80,16 @@
               <mat-label>Data de nascimento</mat-label>
               <input
                 matInput
+                [max]="today"
                 [matDatepicker]="birthday"
-                formControlName="birthdate">
+                formControlName="birthday">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle
                 matIconSuffix
                 [for]="birthday"></mat-datepicker-toggle>
               <mat-datepicker #birthday></mat-datepicker>
               <mat-error
-                *ngIf="addPeopleForm.controls['birthdate'].hasError('required')">
+                *ngIf="addPeopleForm.controls['birthday'].hasError('required')">
                 A data de nascimento é <strong>obrigatária</strong>
               </mat-error>
             </mat-form-field>

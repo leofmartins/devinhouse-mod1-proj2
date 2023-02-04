@@ -41,18 +41,23 @@ export class AddPeopleComponent implements OnInit {
     siafi: ""
   }
 
+  today!: Date;
+
   constructor(
     private fb: FormBuilder,
     private viaCepService: ViacepService,
-    private rout: ActivatedRoute
-  ) {}
+    private rout: ActivatedRoute,
+
+  ) {
+    this.today = new Date();
+  }
 
   ngOnInit() {
     this.id = this.rout.snapshot.params['id'];
     this.addPeopleForm = this.fb.group({
       allergies: [null],
       birthTown: [null, Validators.required],
-      birthdate: [null, Validators.required],
+      birthday: [null, Validators.required],
       complement: [null],
       cpf: ['', Validators.compose([
         Validators.required,
@@ -90,7 +95,6 @@ export class AddPeopleComponent implements OnInit {
       this.title = `Editando o cadastro de [Fulano]`;
       this.editing = true;
     }
-
   }
 
   onSubmit(): void {
