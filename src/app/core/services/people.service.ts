@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from "rxjs";
+import { Observable } from "rxjs";
 import { People, Person } from "@shared/interfaces";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -23,21 +23,7 @@ export class PeopleService {
     return this.http.get<Person>(`${this.peopleUrl}/id=${id}`)
   }
 
-  addPerson(person: Person): any {
-    this.http.post<Person>(this.peopleUrl, person)
-      .subscribe(result => {
-        console.log(result);
-      });
-  }
-  
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      console.log(`${ operation } failed: ${ error.message }`);
-
-      return of(result as T);
-    };
+  addPerson(person: Person): Observable<Person> {
+    return this.http.post<Person>(this.peopleUrl, person);
   }
 }

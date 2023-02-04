@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ViacepService } from "./services/viacep.service";
 import { ViaCep } from "@shared/interfaces";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dialog.component";
 import { PeopleService } from "@services/people-service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'lab-add-people',
@@ -51,7 +52,9 @@ export class AddPeopleComponent implements OnInit {
     private viaCepService: ViacepService,
     private rout: ActivatedRoute,
     public dialog: MatDialog,
-    private peopleService: PeopleService
+    private peopleService: PeopleService,
+    private route: Router,
+    private _snackBar: MatSnackBar
 
   ) {
     this.today = new Date();
@@ -118,7 +121,13 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.peopleService.addPerson(this.addPeopleForm.value);
+    this.peopleService.addPerson(this.addPeopleForm.value)
+      .subscribe(newPerson => {
+        this._snackBar.open(
+          `${newPerson.name} adiconado com sucesso.`,
+          'OK',
+          { duration: 3000 });
+      })
   }
 
   getAdressFromViaCep(cep: string) {

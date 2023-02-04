@@ -47,6 +47,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { CpfPipe } from './features/add-people/pipes/cpf.pipe';
 import { PhonePipe } from './features/add-people/pipes/phone.pipe';
 import { CepPipe } from './features/add-people/pipes/cep.pipe';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+
 
 registerLocaleData(localePT);
 
@@ -97,7 +99,8 @@ registerLocaleData(localePT);
     FormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     {
