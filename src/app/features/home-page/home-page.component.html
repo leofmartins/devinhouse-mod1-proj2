@@ -4,7 +4,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/conference-call.png" alt="people icon">
-        <p>{{ getPeopleLength() }}</p>
+        <p>{{ getPeopleLength() || "0" }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Pacientes</mat-card-title>
@@ -15,7 +15,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/stethoscope.png" alt="appointment icon">
-        <p>{{ getAppointMentCount() }}</p>
+        <p>{{ getAppointMentCount() || "0" }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Consultas</mat-card-title>
@@ -26,7 +26,7 @@
     <mat-card class="stats-card">
       <mat-card-content class="stat-card-content">
         <img src="https://img.icons8.com/material-outlined/96/null/treatment-list.png" alt="exam icon">
-        <p>{{ getExamsCount() }}</p>
+        <p>{{ getExamsCount() || "0" }}</p>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-title>Exames</mat-card-title>

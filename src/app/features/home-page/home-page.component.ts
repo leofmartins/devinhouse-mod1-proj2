@@ -19,26 +19,26 @@ export class HomePageComponent implements OnInit {
         people => this.people = people
       );
   }
-  getPeopleLength(): number {
+  getPeopleLength(): number | null {
     if (this.people) {
       return this.people.length;
     }
-    return 0;
+    return null;
   }
 
-  getAppointMentCount(): number {
+  getAppointMentCount(): number | null {
     let numberOfAppointments = 0;
     this.people?.forEach(
-      person => numberOfAppointments += person.appointment.length
+      person => numberOfAppointments += person.appointment?.length
     )
-    return numberOfAppointments
+    return numberOfAppointments || null
   }
 
-  getExamsCount(): number {
+  getExamsCount(): number | null {
     let numberOfExams = 0;
     this.people?.forEach(
-      person => numberOfExams += person.exams.length
+      person => numberOfExams += person.exams?.length
     );
-    return numberOfExams
+    return numberOfExams || null
   }
 }
