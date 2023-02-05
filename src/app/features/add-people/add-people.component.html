@@ -1,4 +1,4 @@
-<div *ngIf="!loading">
+<div *ngIf="!submiting && !loading">
   <form
     [formGroup]="addPeopleForm"
     novalidate
@@ -431,6 +431,6 @@
     </mat-card>
   </form>
 </div>
-<div *ngIf="loading">
+<div *ngIf="submiting || loading">
   <mat-spinner></mat-spinner>
 </div>
