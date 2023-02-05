@@ -7,6 +7,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from "./components/confirm-dialog/confirm-dialog.component";
 import { PeopleService } from "@services/people-service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { ConfirmDeleteComponent } from "./components/confirm-delete/confirm-delete.component";
 
 @Component({
   selector: 'lab-add-people',
@@ -109,12 +110,12 @@ export class AddPeopleComponent implements OnInit {
     }
   }
 
-  openDiaglog(): void {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+  openConfirmDiaglog(): void {
+    const confirmDialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: { ...this.addPeopleForm.value}
     });
 
-    dialogRef.afterClosed()
+    confirmDialogRef.afterClosed()
       .subscribe(result => {
         if (result) {
           this.onSubmit();
@@ -152,15 +153,23 @@ export class AddPeopleComponent implements OnInit {
         if (person.exams || person.appointment) {
           alert('pessos possui exame ou consulta');
         } else {
-          this.peopleService.deletePerson(person.id)
-            .subscribe(() => {
-              this._snackBar.open(
-                `Cadastro excluído com sucesso.`,
-                'OK',
-                { duration: 3000 }
-              )
-              this.router.navigateByUrl('/home');
-            })
+          const confirmDeleteDialogRef = this.dialog.open(ConfirmDeleteComponent, {
+            data: { ...this.addPeopleForm.value}
+          });
+          confirmDeleteDialogRef.afterClosed()
+            .subscribe(result => {
+              if (result) {
+                this.peopleService.deletePerson(person.id)
+                  .subscribe(() => {
+                    this._snackBar.open(
+                      `Cadastro excluído com sucesso.`,
+                      'OK',
+                      { duration: 3000 }
+                    )
+                    this.router.navigateByUrl('/home');
+                  })
+              }
+            });
         }
       })
   }
