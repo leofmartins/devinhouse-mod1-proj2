@@ -55,7 +55,7 @@
         <mat-card-title class="person-detail-card-title">
           {{ person.name }}
         </mat-card-title>
-        <p>30 anos</p>
+        <p>{{ person.birthdate | age }} anos</p>
         <p>{{ person.phoneNumber | phone }}</p>
         <p>{{ person.healthInsurance }}</p>
       </mat-card-content>

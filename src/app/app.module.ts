@@ -48,6 +48,7 @@ import { CpfPipe } from './features/add-people/pipes/cpf.pipe';
 import { PhonePipe } from './features/add-people/pipes/phone.pipe';
 import { CepPipe } from './features/add-people/pipes/cep.pipe';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { AgePipe } from './features/home-page/pipes/age.pipe';
 
 
 registerLocaleData(localePT);
@@ -66,7 +67,8 @@ registerLocaleData(localePT);
     ConfirmDialogComponent,
     CpfPipe,
     PhonePipe,
-    CepPipe
+    CepPipe,
+    AgePipe
   ],
   imports: [
     BrowserModule,
