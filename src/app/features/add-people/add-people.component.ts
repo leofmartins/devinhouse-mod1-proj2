@@ -20,6 +20,7 @@ export class AddPeopleComponent implements OnInit {
   title!: string;
   editing = false;
   loading = false;
+  submiting = false;
   genders = ['Masculino', 'Feminino'];
 
   maritalStatus = [
@@ -99,10 +100,12 @@ export class AddPeopleComponent implements OnInit {
     });
 
     if (this.id) {
+      this.loading = true;
       this.peopleService.getPerson(this.id)
         .subscribe(person => {
           this.addPeopleForm.patchValue(person);
           this.title = `Editando o cadastro de ${person.name}`;
+          this.loading = false;
         })
       this.editing = true;
     } else {
@@ -116,14 +119,13 @@ export class AddPeopleComponent implements OnInit {
     });
 
     confirmDialogRef.afterClosed()
-      .subscribe(result => {
-        if (result) {
+      .subscribe(() => {
           this.onSubmit();
-        }
       });
   }
 
   onSubmit(): void {
+    this.submiting = true;
     if (!this.editing) {
       this.peopleService.addPerson(this.addPeopleForm.value)
         .subscribe(newPerson => {
@@ -132,6 +134,7 @@ export class AddPeopleComponent implements OnInit {
             'OK',
             { duration: 3000 }
           );
+          this.submiting = false;
           this.router.navigateByUrl('/home');
         })
     } else {
@@ -142,6 +145,7 @@ export class AddPeopleComponent implements OnInit {
             'OK',
             { duration: 3000 }
           );
+          this.submiting = false;
           this.router.navigateByUrl('/home');
         })
     }
