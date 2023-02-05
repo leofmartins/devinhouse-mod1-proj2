@@ -38,7 +38,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.currentRoute = this.router.url;
-    console.log(this.currentRoute);
     this.setTitle();
   }
 
