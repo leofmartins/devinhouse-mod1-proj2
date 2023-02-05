@@ -19,7 +19,6 @@ export class AddPeopleComponent implements OnInit {
   title!: string;
   editing = false;
   loading = false;
-
   genders = ['Masculino', 'Feminino'];
 
   maritalStatus = [
@@ -60,6 +59,7 @@ export class AddPeopleComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.rout.snapshot.params['id'];
+
     this.addPeopleForm = this.fb.group({
       address: this.fb.group({
         cep: [null, Validators.compose([
@@ -97,11 +97,15 @@ export class AddPeopleComponent implements OnInit {
       healthInsuranceExpiration: [null]
     });
 
-    this.title = "Preencha os campos para cadastrar";
-
     if (this.id) {
-      this.title = `Editando o cadastro de [Fulano]`;
+      this.peopleService.getPerson(this.id)
+        .subscribe(person => {
+          this.addPeopleForm.patchValue(person);
+          this.title = `Editando o cadastro de ${person.name}`;
+        })
       this.editing = true;
+    } else {
+      this.title = "Preencha os campos para cadastrar";
     }
   }
 

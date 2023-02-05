@@ -20,7 +20,7 @@ export class PeopleService {
   }
 
   getPerson(id: string): Observable<Person> {
-    return this.http.get<Person>(`${this.peopleUrl}/id=${id}`)
+    return this.http.get<Person>(`${this.peopleUrl}/${id}`)
   }
 
   addPerson(person: Person): Observable<Person> {
