@@ -56,11 +56,11 @@
           {{ person.name }}
         </mat-card-title>
         <p>30 anos</p>
-        <p>{{ person.phoneNumber}}</p>
+        <p>{{ person.phoneNumber | phone }}</p>
         <p>{{ person.healthInsurance }}</p>
       </mat-card-content>
       <mat-card-footer>
-        <a href="#">Ver mais</a>
+        <a routerLink="/edit/{{person.id}}">Ver mais</a>
       </mat-card-footer>
     </mat-card>
   </div>
