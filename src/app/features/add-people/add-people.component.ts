@@ -15,7 +15,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 })
 export class AddPeopleComponent implements OnInit {
   addPeopleForm!: FormGroup;
-  id?: string;
+  id!: string;
   title!: string;
   editing = false;
   loading = false;
@@ -123,13 +123,45 @@ export class AddPeopleComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.peopleService.addPerson(this.addPeopleForm.value)
-      .subscribe(newPerson => {
-        this._snackBar.open(
-          `${newPerson.name} adiconado com sucesso.`,
-          'OK',
-          { duration: 3000 });
-        this.router.navigateByUrl('/home');
+    if (!this.editing) {
+      this.peopleService.addPerson(this.addPeopleForm.value)
+        .subscribe(newPerson => {
+          this._snackBar.open(
+            `${newPerson.name} adiconado com sucesso.`,
+            'OK',
+            { duration: 3000 }
+          );
+          this.router.navigateByUrl('/home');
+        })
+    } else {
+      this.peopleService.editPerson(this.addPeopleForm.value, this.id)
+        .subscribe(editedPerson => {
+          this._snackBar.open(
+            `Dados de ${editedPerson.name} editado com sucesso.`,
+            'OK',
+            { duration: 3000 }
+          );
+          this.router.navigateByUrl('/home');
+        })
+    }
+  }
+
+  deletePerson() {
+    this.peopleService.getPerson(this.id)
+      .subscribe(person => {
+        if (person.exams || person.appointment) {
+          alert('pessos possui exame ou consulta');
+        } else {
+          this.peopleService.deletePerson(person.id)
+            .subscribe(() => {
+              this._snackBar.open(
+                `Cadastro excluído com sucesso.`,
+                'OK',
+                { duration: 3000 }
+              )
+              this.router.navigateByUrl('/home');
+            })
+        }
       })
   }
 
