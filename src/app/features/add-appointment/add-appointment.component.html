@@ -1,4 +1,18 @@
 <form [formGroup]="addAppointmentForm" novalidate>
+  <div class="col">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Digite o nome do paciente</mat-label>
+      <input matInput
+             [matAutocomplete]="auto"
+             [formControl]="personCtrl"
+             >
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let people of filteredPeople | async" [value]="people.name" (click)="getAppointment(people.id)">
+          <span>id: {{ people.id }} | {{ people.name }}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
   <mat-card class="add-appointment-card">
     <mat-card-content>
       <mat-card-actions class="add-form-button-group">
@@ -6,59 +20,61 @@
         <button mat-stroked-button color="warn">DELETAR</button>
         <button mat-raised-button color="primary">SALVAR</button>
       </mat-card-actions>
-      <mat-card-title>Consulta de [Nome do Paciente]</mat-card-title>
-      <div class="row">
-        <div class="col">
+      <mat-card-title>Consulta de </mat-card-title>
+      <div formGroupName="appointment">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Motivo da Consulta</mat-label>
+              <input matInput placeholder="Informe o motivo da consulta" formControlName="reasonOfAppointment">
+              <!--            <mat-error *ngIf="addAppointmentForm.controls['reasonOfAppointment'].hasError('required')">-->
+              <!--              O motivo da consulta é <strong>obrigatório</strong>-->
+              <!--            </mat-error>-->
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Data da consulta</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="appointmentDate">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <!--            <mat-error *ngIf="appointment.controls['appointmentDate'].hasError('required')">-->
+              <!--              A data da consulta<strong>obrigatória</strong>-->
+              <!--            </mat-error>-->
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Hora da consulta</mat-label>
+              <input type="time" matInput formControlName="appointmentTime">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Motivo da Consulta</mat-label>
-            <input matInput placeholder="Informe o motivo da consulta" formControlName="subject">
-            <mat-error *ngIf="addAppointmentForm.controls['subject'].hasError('required')">
-              O motivo da consulta é <strong>obrigatório</strong>
-            </mat-error>
+            <mat-label>Descrição do Problema</mat-label>
+            <textarea matInput placeholder="Informe a descrição do problema..." formControlName="healthProblemDescription"></textarea>
+            <!--          <mat-error *ngIf="addAppointmentForm.controls['healthProblemDescription'].hasError('required')">-->
+            <!--            A descrição é <strong>obrigatória</strong>-->
+            <!--          </mat-error>-->
           </mat-form-field>
         </div>
-        <div class="col">
+        <div class="row">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Data da consulta</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="date">
-            <mat-hint>DD/MM/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="addAppointmentForm.controls['date'].hasError('required')">
-              A data da consulta<strong>obrigatória</strong>
-            </mat-error>
+            <mat-label>Medicação Receita</mat-label>
+            <textarea cols="30" rows="5" matInput placeholder="Informe a descrição do problema..." formControlName="prescriptionMedication"></textarea>
           </mat-form-field>
         </div>
-        <div class="col">
+        <div class="row">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Hora da consulta</mat-label>
-            <input type="time" matInput formControlName="time">
+            <mat-label>Dosagem e precauções</mat-label>
+            <textarea cols="30" rows="5" matInput placeholder="Informe a detalhes da dosagem e precauções..." formControlName="dosageAndPrecaution"></textarea>
+            <!--          <mat-error *ngIf="addAppointmentForm.controls['dosageAndPrecaution'].hasError('required')">-->
+            <!--            Este campo é <strong>obrigatório</strong>-->
+            <!--          </mat-error>-->
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Descrição do Problema</mat-label>
-          <textarea matInput placeholder="Informe a descrição do problema..." formControlName="description"></textarea>
-          <mat-error *ngIf="addAppointmentForm.controls['description'].hasError('required')">
-            A descrição é <strong>obrigatória</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Medicação Receita</mat-label>
-          <textarea cols="30" rows="5" matInput placeholder="Informe a descrição do problema..." formControlName="medication"></textarea>
-        </mat-form-field>
-      </div>
-      <div class="row">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Dosagem e precauções</mat-label>
-          <textarea cols="30" rows="5" matInput placeholder="Informe a detalhes da dosagem e precauções..." formControlName="precaution"></textarea>
-          <mat-error *ngIf="addAppointmentForm.controls['precaution'].hasError('required')">
-            Este campo é <strong>obrigatório</strong>
-          </mat-error>
-        </mat-form-field>
       </div>
     </mat-card-content>
   </mat-card>

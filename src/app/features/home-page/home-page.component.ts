@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
   getAppointMentCount(): number | null {
     let numberOfAppointments = 0;
     this.people?.forEach(
-      person => numberOfAppointments += person.appointment?.length
+      person => numberOfAppointments
     )
     return numberOfAppointments || null
   }
@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit {
   getExamsCount(): number | null {
     let numberOfExams = 0;
     this.people?.forEach(
-      person => numberOfExams += person.exams?.length
+      person => numberOfExams
     );
     return numberOfExams || null
   }
