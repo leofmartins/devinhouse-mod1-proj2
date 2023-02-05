@@ -30,4 +30,8 @@ export class PeopleService {
   editPerson(person: Person, id: string): Observable<Person> {
     return this.http.put<Person>(`${this.peopleUrl}/${id}`, person, this.httpOptions);
   }
+
+  deletePerson(id: string): Observable<Person> {
+    return this.http.delete<Person>(`${this.peopleUrl}/${id}`, this.httpOptions);
+  }
 }

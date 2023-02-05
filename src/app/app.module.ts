@@ -49,6 +49,7 @@ import { PhonePipe } from './features/add-people/pipes/phone.pipe';
 import { CepPipe } from './features/add-people/pipes/cep.pipe';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { AgePipe } from './features/home-page/pipes/age.pipe';
+import { ConfirmDeleteComponent } from './features/add-people/components/confirm-delete/confirm-delete.component';
 
 
 registerLocaleData(localePT);
@@ -68,7 +69,8 @@ registerLocaleData(localePT);
     CpfPipe,
     PhonePipe,
     CepPipe,
-    AgePipe
+    AgePipe,
+    ConfirmDeleteComponent
   ],
   imports: [
     BrowserModule,
