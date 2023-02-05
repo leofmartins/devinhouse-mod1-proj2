@@ -24,6 +24,10 @@ export class PeopleService {
   }
 
   addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.peopleUrl, person);
+    return this.http.post<Person>(this.peopleUrl, person, this.httpOptions);
+  }
+
+  editPerson(person: Person): Observable<Person> {
+    return this.http.put<Person>(this.peopleUrl, person, this.httpOptions);
   }
 }
