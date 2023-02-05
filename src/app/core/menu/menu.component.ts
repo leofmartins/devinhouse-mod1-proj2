@@ -42,24 +42,28 @@ export class MenuComponent implements OnInit {
   }
 
   setTitle() {
-    switch (this.currentRoute) {
-      case '/home':
-        this.pageTitle = 'ESTATÍSTICAS E INFORMAÇÕES';
-        break;
-      case '/add-people':
-        this.pageTitle = 'CADASTRO DE PACIENTE';
-        break;
-      case '/list-people':
-        this.pageTitle = 'LISTAGEM DE PRONTUÁRIOS';
-        break;
-      case '/add-appointment':
-        this.pageTitle = 'CADASTRO DE CONSULTA';
-        break;
-      case '/add-exam':
-        this.pageTitle = 'CADASTRO DE EXAME';
-        break;
-      default:
-        this.pageTitle = 'MENU'
+    if (this.currentRoute.includes('edit')) {
+      this.pageTitle = 'EDIÇÃO DE PACIENTE'
+    } else {
+      switch (this.currentRoute) {
+        case '/home':
+          this.pageTitle = 'ESTATÍSTICAS E INFORMAÇÕES';
+          break;
+        case '/add-people':
+          this.pageTitle = 'CADASTRO DE PACIENTE';
+          break;
+        case '/list-people':
+          this.pageTitle = 'LISTAGEM DE PRONTUÁRIOS';
+          break;
+        case '/add-appointment':
+          this.pageTitle = 'CADASTRO DE CONSULTA';
+          break;
+        case '/add-exam':
+          this.pageTitle = 'CADASTRO DE EXAME';
+          break;
+        default:
+          this.pageTitle = 'MENU'
+      }
     }
   }
 }
