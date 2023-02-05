@@ -19,8 +19,6 @@ export class AddPeopleComponent implements OnInit {
   title!: string;
   editing = false;
   loading = false;
-  submmited = false;
-  submmiting = false;
 
   genders = ['Masculino', 'Feminino'];
 
@@ -53,7 +51,7 @@ export class AddPeopleComponent implements OnInit {
     private rout: ActivatedRoute,
     public dialog: MatDialog,
     private peopleService: PeopleService,
-    private route: Router,
+    private router: Router,
     private _snackBar: MatSnackBar
 
   ) {
@@ -127,6 +125,7 @@ export class AddPeopleComponent implements OnInit {
           `${newPerson.name} adiconado com sucesso.`,
           'OK',
           { duration: 3000 });
+        this.router.navigateByUrl('/home');
       })
   }
 

@@ -50,7 +50,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>MENU</span>
+      <span>{{ pageTitle }}</span>
       <div class="user-section">
         <span mat-subheader>Usuário</span>
         <button mat-icon-button matTooltip="Gerenciar conta" [matMenuTriggerFor]="menu">
