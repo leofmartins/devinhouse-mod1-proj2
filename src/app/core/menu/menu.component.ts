@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { NavigationStart, Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 class NavigationEvent {
 }
@@ -24,9 +25,11 @@ export class MenuComponent implements OnInit {
     );
 
   currentRoute!: string;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.router.events.subscribe(
       (event: NavigationEvent) => {
@@ -73,5 +76,13 @@ export class MenuComponent implements OnInit {
   logout() {
     localStorage.removeItem('userLogged');
     this.router.navigateByUrl('/login');
+  }
+
+  accountingSettings() {
+    this._snackBar.open(
+      `Função ainda não implementada. Contate o suporte.`,
+      'OK',
+      { duration: 3000 }
+    );
   }
 }
