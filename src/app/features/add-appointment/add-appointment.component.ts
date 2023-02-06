@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Observable, startWith } from "rxjs";
 import { People, Person } from "@shared/interfaces";
 import { PeopleService } from "@services/people-service";
 import { map } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'lab-add-appointment',
@@ -11,30 +13,20 @@ import { map } from "rxjs/operators";
   styleUrls: ['./add-appointment.component.css']
 })
 export class AddAppointmentComponent implements OnInit {
-  addAppointmentForm = this.fb.group({
-    appointment: this.fb.group({
-      reasonOfAppointment: ['', Validators.compose([
-        Validators.required, Validators.minLength(8), Validators.maxLength(64)
-      ])],
-      appointmentDate: ['', Validators.required],
-      appointmentTime: ['', Validators.required],
-      healthProblemDescription: ['', Validators.compose([
-        Validators.required, Validators.minLength(16), Validators.maxLength(1024)
-      ])],
-      prescriptionMedication: '',
-      dosageAndPrecaution: ['', Validators.compose([
-        Validators.required, Validators.minLength(16), Validators.maxLength(256)
-      ])]
-    })
-  });
+  addAppointmentForm!: FormGroup;
 
   people: People = [];
   selectedPerson!: Person;
   personCtrl = new FormControl('');
   filteredPeople!: Observable<People>;
+  submiting = false;
+  loading = false;
+
   constructor(
     private fb: FormBuilder,
-    private peopleService: PeopleService
+    private peopleService: PeopleService,
+    private _snackBar: MatSnackBar,
+    private router: Router
     ) {
     this.peopleService.getPeople()
       .subscribe(people => this.people = people);
@@ -45,6 +37,22 @@ export class AddAppointmentComponent implements OnInit {
     return this.people.filter(person => person.name.toLowerCase().includes(filterValue));
   }
   ngOnInit() {
+    this.addAppointmentForm = this.fb.group({
+      // appointment: this.fb.group({
+        reasonOfAppointment: ['', Validators.compose([
+          Validators.required, Validators.minLength(8), Validators.maxLength(64)
+        ])],
+        appointmentDate: ['', Validators.required],
+        appointmentTime: ['', Validators.required],
+        healthProblemDescription: ['', Validators.compose([
+          Validators.required, Validators.minLength(16), Validators.maxLength(1024)
+        ])],
+        prescriptionMedication: '',
+        dosageAndPrecaution: ['', Validators.compose([
+          Validators.required, Validators.minLength(16), Validators.maxLength(256)
+        ])]
+      })
+
     this.filteredPeople = this.personCtrl.valueChanges.pipe(
       startWith(''),
       map(person => (person? this._filteredPeople(person) : this.people.slice()))
@@ -52,27 +60,36 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   getAppointment(id: string) {
-    console.log(id);
+    this.loading = true;
     this.peopleService.getPerson(id)
       .subscribe((person) => {
         this.selectedPerson = person;
-        console.log(person);
+        console.log(person.id);
         if (person.appointment) {
           this.addAppointmentForm.patchValue({
-            appointment: {
               reasonOfAppointment: person.appointment.reasonOfAppointment,
               appointmentDate: person.appointment.appointmentDate,
               appointmentTime: person.appointment.appointmentTime,
               healthProblemDescription: person.appointment.healthProblemDescription,
               prescriptionMedication: person.appointment.prescriptionMedication,
               dosageAndPrecaution: person.appointment.dosageAndPrecaution
-            }
           })
         }
+        this.loading = false;
       });
   }
-  updateAppointmentPerson(person: Person, id: number) {
-    // this.peopleService.editPerson(this.addAppointmentForm.value, this.selectedPerson.id)
-    //   .subscribe(() => {})
+  updateAppointmentPerson() {
+    this.selectedPerson.appointment = this.addAppointmentForm.value;
+    console.log(this.selectedPerson.id);
+    this.peopleService.editPerson(this.selectedPerson, this.selectedPerson.id)
+      .subscribe(editedPerson => {
+        this._snackBar.open(
+          `Consulta de ${editedPerson.name} cadastrada com sucesso.`,
+          'OK',
+          { duration: 3000 }
+        );
+        this.submiting = false;
+        this.router.navigateByUrl('/home');
+      })
   }
 }
