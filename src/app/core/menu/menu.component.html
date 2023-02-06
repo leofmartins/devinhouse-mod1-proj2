@@ -14,7 +14,7 @@
         <mat-icon>home</mat-icon>
         <span>Início</span>
       </a>
-      <a mat-menu-item href="#">
+      <a mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span>Sair</span>
       </a>
@@ -62,7 +62,8 @@
           <mat-icon>settings</mat-icon>
           <span>Configurações da Conta</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item
+                (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>Sair</span>
         </button>

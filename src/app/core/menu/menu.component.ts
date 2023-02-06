@@ -66,4 +66,9 @@ export class MenuComponent implements OnInit {
       }
     }
   }
+
+  logout() {
+    localStorage.removeItem('userLogged');
+    this.router.navigateByUrl('/login');
+  }
 }
