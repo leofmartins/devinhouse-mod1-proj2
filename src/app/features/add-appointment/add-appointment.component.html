@@ -16,20 +16,30 @@
     <mat-card class="add-appointment-card">
       <mat-card-content>
         <mat-card-actions class="add-form-button-group">
-          <mat-slide-toggle>Editar</mat-slide-toggle>
-          <button mat-stroked-button color="warn">DELETAR</button>
-          <button mat-raised-button color="primary" (click)="updateAppointmentPerson()">SALVAR</button>
+          <mat-slide-toggle [checked]="editting">Editar</mat-slide-toggle>
+          <button
+            mat-stroked-button
+            color="warn"
+            [disabled]="!selectedPerson"
+            (click)="deleteAppointmentPerson()">DELETAR</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="updateAppointmentPerson()"
+            [disabled]="addAppointmentForm.invalid">SALVAR</button>
         </mat-card-actions>
-        <mat-card-title>Consulta de </mat-card-title>
+        <mat-card-title *ngIf="selectedPerson">Consulta de {{ selectedPerson.name }}</mat-card-title>
         <div>
           <div class="row">
             <div class="col">
               <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Motivo da Consulta</mat-label>
-                <input matInput placeholder="Informe o motivo da consulta" formControlName="reasonOfAppointment">
-                <!--            <mat-error *ngIf="addAppointmentForm.controls['reasonOfAppointment'].hasError('required')">-->
-                <!--              O motivo da consulta é <strong>obrigatório</strong>-->
-                <!--            </mat-error>-->
+                <input matInput
+                       placeholder="Informe o motivo da consulta"
+                       formControlName="reasonOfAppointment">
+                            <mat-error *ngIf="addAppointmentForm.controls['reasonOfAppointment'].hasError('required')">
+                              O motivo da consulta é <strong>obrigatório</strong>
+                            </mat-error>
               </mat-form-field>
             </div>
             <div class="col">
@@ -39,9 +49,9 @@
                 <mat-hint>DD/MM/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
-                <!--            <mat-error *ngIf="appointment.controls['appointmentDate'].hasError('required')">-->
-                <!--              A data da consulta<strong>obrigatória</strong>-->
-                <!--            </mat-error>-->
+                            <mat-error *ngIf="addAppointmentForm.controls['appointmentDate'].hasError('required')">
+                              A data da consulta<strong>obrigatória</strong>
+                            </mat-error>
               </mat-form-field>
             </div>
             <div class="col">

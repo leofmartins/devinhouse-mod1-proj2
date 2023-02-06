@@ -22,6 +22,8 @@ export class AddAppointmentComponent implements OnInit {
   submiting = false;
   loading = false;
 
+  editting!: boolean;
+
   constructor(
     private fb: FormBuilder,
     private peopleService: PeopleService,
@@ -80,11 +82,25 @@ export class AddAppointmentComponent implements OnInit {
   }
   updateAppointmentPerson() {
     this.selectedPerson.appointment = this.addAppointmentForm.value;
-    console.log(this.selectedPerson.id);
     this.peopleService.editPerson(this.selectedPerson, this.selectedPerson.id)
       .subscribe(editedPerson => {
         this._snackBar.open(
           `Consulta de ${editedPerson.name} cadastrada com sucesso.`,
+          'OK',
+          { duration: 3000 }
+        );
+        this.submiting = false;
+        this.router.navigateByUrl('/home');
+      })
+  }
+
+  deleteAppointmentPerson() {
+    this.addAppointmentForm.reset();
+    this.selectedPerson.appointment = this.addAppointmentForm.value;
+    this.peopleService.editPerson(this.selectedPerson, this.selectedPerson.id)
+      .subscribe(editedPerson => {
+        this._snackBar.open(
+          `Consulta de ${editedPerson.name} excluída com sucesso.`,
           'OK',
           { duration: 3000 }
         );
