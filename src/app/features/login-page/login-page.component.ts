@@ -27,6 +27,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   login() {
-    this.authService.checkUser(this.loginForm.value)
+    this.authService.authenticate(this.loginForm.value);
   }
 }

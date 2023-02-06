@@ -13,14 +13,17 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
   isLoggedIn(): boolean {
-    return false;
+    return !!localStorage.getItem("userLogged");
   }
   constructor(private http: HttpClient) { }
 
-  checkUser(user: User) {
-    this.http.get<User>(this.usersUrl)
+  authenticate(user: User) {
+    this.http.get<User[]>(this.usersUrl)
       .subscribe(users => {
-        console.log(users);
+        const userFinded = users.find(x => x.email === user.email && x.password === user.password);
+        if(userFinded) {
+          localStorage.setItem("userLogged", userFinded.name);
+        }
       })
   }
 
