@@ -15,6 +15,8 @@ class NavigationEvent {
 export class MenuComponent implements OnInit {
   pageTitle!: string;
 
+  userLogged!: string | null;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -39,6 +41,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.currentRoute = this.router.url;
     this.setTitle();
+    this.userLogged = localStorage.getItem("userLogged");
   }
 
   setTitle() {
