@@ -21,7 +21,7 @@ Lista de pacientes
 
 A aplicação faz uso do Json-Server para simular o bando de dados
 
-##A fim de rodar a aplicação, faça o seguinte:
+## A fim de rodar a aplicação, faça o seguinte:
 
 1. Intalle o json-server com o comando npm install -g json-server
 2. Clone o repositório em um repositório de seu PC/Mac
