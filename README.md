@@ -25,5 +25,8 @@ A fim de rodar a aplicação, faça o seguinte:
 
 1. Intalle o json-server com o comando npm install -g json-server
 2. Clone o repositório em um repositório de seu PC/Mac
-2. Entre no diretório criado, cd <diretório> e rode o comando npm install
-3. Em resguida, rode o comando ng serve -o
+3. Entre no diretório criado, cd <diretório> e rode o comando npm install
+4. Em seguida rode o comando json-server -watch labmedical.db
+5. Por fim, rode o comando ng serve -o
+
+Pronto! A aplicação deve rodar.
