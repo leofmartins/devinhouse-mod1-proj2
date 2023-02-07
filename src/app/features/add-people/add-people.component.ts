@@ -16,7 +16,7 @@ import { ConfirmDeleteComponent } from "./components/confirm-delete/confirm-dele
 })
 export class AddPeopleComponent implements OnInit {
   addPeopleForm!: FormGroup;
-  id!: string;
+  id!: number;
   title!: string;
   editing = false;
   loading = false;
@@ -152,30 +152,30 @@ export class AddPeopleComponent implements OnInit {
   }
 
   deletePerson() {
-    this.peopleService.getPerson(this.id)
-      .subscribe(person => {
-        if (person.exams || person.appointment) {
-          alert('pessos possui exame ou consulta');
-        } else {
-          const confirmDeleteDialogRef = this.dialog.open(ConfirmDeleteComponent, {
-            data: { ...this.addPeopleForm.value}
-          });
-          confirmDeleteDialogRef.afterClosed()
-            .subscribe(result => {
-              if (result) {
-                this.peopleService.deletePerson(person.id)
-                  .subscribe(() => {
-                    this._snackBar.open(
-                      `Cadastro excluído com sucesso.`,
-                      'OK',
-                      { duration: 3000 }
-                    )
-                    this.router.navigateByUrl('/home');
-                  })
-              }
-            });
-        }
-      })
+    // this.peopleService.getPerson(this.id)
+    //   .subscribe(person => {
+    //     if (person.exams || person.appointments) {
+    //       alert('pessos possui exame ou consulta');
+    //     } else {
+    //       const confirmDeleteDialogRef = this.dialog.open(ConfirmDeleteComponent, {
+    //         data: { ...this.addPeopleForm.value}
+    //       });
+    //       confirmDeleteDialogRef.afterClosed()
+    //         .subscribe(result => {
+    //           if (result) {
+    //             this.peopleService.deletePerson(person.id)
+    //               .subscribe(() => {
+    //                 this._snackBar.open(
+    //                   `Cadastro excluído com sucesso.`,
+    //                   'OK',
+    //                   { duration: 3000 }
+    //                 )
+    //                 this.router.navigateByUrl('/home');
+    //               })
+    //           }
+    //         });
+    //     }
+    //   })
   }
 
   getAdressFromViaCep(cep: string) {

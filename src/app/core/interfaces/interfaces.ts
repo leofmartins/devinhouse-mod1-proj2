@@ -1,7 +1,6 @@
 export interface Appointment {
-
-  id: string;
-  peopleId: string;
+  id: number;
+  personId: number;
   appointmentTime: string;
   appointmentDate: string;
   dosageAndPrecaution: string;
@@ -10,10 +9,9 @@ export interface Appointment {
   reasonOfAppointment: string;
 }
 
-interface Exam {
-
-  id: string;
-  peopleId: string
+export interface Exam {
+  id: number;
+  personId: number
   documentUrl?: string;
   examName: string;
   examTime: string;
@@ -23,7 +21,7 @@ interface Exam {
 }
 
 export interface Person {
-  id: string,
+  id: number,
   address: {
     cep: string;
     town: string;
@@ -35,13 +33,11 @@ export interface Person {
     street: string;
   };
   allergies?: string;
-  appointment: Appointment;
   birthTown: Date;
   birthdate: string;
   cpf: string;
   email?: string;
   emergencyContact: string;
-  exams: Exam;
   gender: string;
   healthInsurance?: string;
   healthInsuranceExpiration?: Date;

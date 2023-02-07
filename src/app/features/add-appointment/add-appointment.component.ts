@@ -60,7 +60,7 @@ export class AddAppointmentComponent implements OnInit {
     )
   }
 
-  getPerson(id: string) {
+  getPerson(id: number) {
     this.loading = true;
     this.peopleService.getPerson(id)
       .subscribe((person) => {

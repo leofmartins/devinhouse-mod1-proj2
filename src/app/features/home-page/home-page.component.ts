@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { People } from "@shared/interfaces";
+import { Appointment, Exam, People } from "@shared/interfaces";
 import { PeopleService } from "@services/people-service";
 
 @Component({
@@ -9,6 +9,8 @@ import { PeopleService } from "@services/people-service";
 })
 export class HomePageComponent implements OnInit {
   people: People | undefined;
+  appointments: Appointment[] | undefined;
+  exams: Exam[] | undefined;
 
   constructor(private peopleService: PeopleService) {
   }
@@ -16,29 +18,37 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this.peopleService.getPeople()
       .subscribe(
-        people => this.people = people
+        persons => this.people = persons
+      );
+
+    this.peopleService.getAppointments()
+      .subscribe(
+        appointments => this.appointments = appointments
+      );
+
+    this.peopleService.getExams()
+      .subscribe(
+        exams => this.exams = exams
       );
   }
-  getPeopleLength(): number | null {
+  getPeopleLength(): number {
     if (this.people) {
       return this.people.length;
     }
-    return null;
+    return 0;
   }
 
-  getAppointMentCount(): number | null {
-    let numberOfAppointments = 0;
-    this.people?.forEach(
-      person => numberOfAppointments
-    )
-    return numberOfAppointments || null
+  getAppointMentCount(): number {
+    if (this.appointments) {
+      return this.appointments.length;
+    }
+    return 0;
   }
 
-  getExamsCount(): number | null {
-    let numberOfExams = 0;
-    this.people?.forEach(
-      person => numberOfExams
-    );
-    return numberOfExams || null
+  getExamsCount(): number {
+    if (this.exams) {
+      return this.exams.length;
+    }
+    return 0;
   }
 }
