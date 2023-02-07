@@ -1,0 +1,132 @@
+{
+  "persons": [
+    {
+      "address": {
+        "cep": "88106786",
+        "state": "SC",
+        "street": "Rua Marcos de Melo",
+        "houseNumber": "123",
+        "town": "São José",
+        "compl": "Casa 1",
+        "district": "Forquilhinha",
+        "pointOfReference": null
+      },
+      "allergies": null,
+      "birthTown": "São Carlos/SP",
+      "birthdate": "1985-10-15T03:00:00.000Z",
+      "cpf": "47838534011",
+      "email": "marcosalmeida@mail.com",
+      "emergencyContact": "48997979191",
+      "gender": "Masculino",
+      "healthInsuranceNumber": null,
+      "healthInsurance": null,
+      "maritalStatus": "Casado(a)",
+      "name": "Marcos Almeida",
+      "phoneNumber": "48998989090",
+      "rg": "1324354657 SSP/SC",
+      "specialCares": null,
+      "healthInsuranceExpiration": null,
+      "id": 1
+    },
+    {
+      "address": {
+        "cep": "87360000",
+        "state": "PR",
+        "street": "Rua do Café",
+        "houseNumber": "719",
+        "town": "Goioerê",
+        "compl": null,
+        "district": "Jd Curitiba",
+        "pointOfReference": null
+      },
+      "allergies": null,
+      "birthTown": "Taubaté/SP",
+      "birthdate": "1995-04-16T03:00:00.000Z",
+      "cpf": "74662034000",
+      "email": "paulsantos@mail.com",
+      "emergencyContact": "44999880099",
+      "gender": "Masculino",
+      "healthInsuranceNumber": null,
+      "healthInsurance": null,
+      "maritalStatus": "Casado(a)",
+      "name": "Paul Santos",
+      "phoneNumber": "51998980909",
+      "rg": "7564534231 SSP/pr",
+      "specialCares": null,
+      "healthInsuranceExpiration": null,
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "leonardo.f.martins@email.com",
+      "name": "Leonardo da Fonseca Martins",
+      "password": "12345678"
+    },
+    {
+      "name": "Sandro Pereira",
+      "email": "sandropereira@email.com",
+      "password": "1324354657",
+      "passwordConfirmation": "1324354657",
+      "id": 4
+    }
+  ],
+  "appointments": [
+    {
+      "appointmentTime": null,
+      "id": 1,
+      "personId": 1
+    },
+    {
+      "reasonOfAppointment": "Dores de cabeça",
+      "appointmentDate": "2023-02-05T03:00:00.000Z",
+      "appointmentTime": "20:00",
+      "healthProblemDescription": "testalsjdl stsdrtsdrt",
+      "prescriptionMedication": "sjlkjlçkjtçlkjtrçslkj",
+      "dosageAndPrecaution": "jtlkjrdlçkjtçdlr",
+      "personId": "1",
+      "id": 2
+    },
+    {
+      "reasonOfAppointment": "sdsafadsfsdf",
+      "appointmentDate": "2023-02-06T03:00:00.000Z",
+      "appointmentTime": "21:00",
+      "healthProblemDescription": "lsdfjaçsljkdfçlkasdj façlsdk",
+      "prescriptionMedication": "sçldakfjaçlskdjfçlaskj ç",
+      "dosageAndPrecaution": "sçldjflksdjf çlsdjkf çsldjf",
+      "personId": "1",
+      "id": 3
+    },
+    {
+      "reasonOfAppointment": "Dores de cabeça",
+      "appointmentDate": "2023-02-01T03:00:00.000Z",
+      "appointmentTime": "10:00",
+      "healthProblemDescription": "asdlçjsdlk fjlkj l",
+      "prescriptionMedication": "sdlfkjf sldkfj sçldjkf ",
+      "dosageAndPrecaution": "sdfgkjsçldkjg sldkfjg lçdskj gçsdlg",
+      "personId": "1",
+      "id": 4
+    },
+    {
+      "reasonOfAppointment": "COnsulta de paulo",
+      "appointmentDate": "2023-02-06T03:00:00.000Z",
+      "appointmentTime": "07:00",
+      "healthProblemDescription": "Consulta de paulo problema",
+      "prescriptionMedication": "Consulta de paulo receita",
+      "dosageAndPrecaution": "asdkfjaçl dsj k sdfg dsfg",
+      "personId": "2",
+      "id": 5
+    },
+    {
+      "reasonOfAppointment": "Consulta Paulo 2",
+      "appointmentDate": "2023-02-06T03:00:00.000Z",
+      "appointmentTime": "23:00",
+      "healthProblemDescription": "Descrição consulta paulo 2",
+      "prescriptionMedication": "Medição paulo 2",
+      "dosageAndPrecaution": "Dosagem paulo 2 Dosagem paulo 2",
+      "personId": "2",
+      "id": 6
+    }
+  ]
+}
