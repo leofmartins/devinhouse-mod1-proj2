@@ -51,6 +51,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { AgePipe } from './features/home-page/pipes/age.pipe';
 import { ConfirmDeleteComponent } from './features/add-people/components/confirm-delete/confirm-delete.component';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { AddUserComponent } from './features/login-page/components/add-user/add-user.component';
 
 
 registerLocaleData(localePT);
@@ -71,7 +72,8 @@ registerLocaleData(localePT);
     PhonePipe,
     CepPipe,
     AgePipe,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

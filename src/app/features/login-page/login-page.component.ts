@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../core/services/auth.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { AddUserComponent } from "./components/add-user/add-user.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: 'lab-login-page',
@@ -15,7 +17,8 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public addUserDialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -26,7 +29,7 @@ export class LoginPageComponent implements OnInit {
         password: [null, Validators.compose([
           Validators.required, Validators.minLength(8)
         ])]
-      })
+      });
   }
 
   login() {
@@ -39,5 +42,14 @@ export class LoginPageComponent implements OnInit {
       'OK',
       { duration: 3000 }
     );
+  }
+
+  openAddUserDialog(): void {
+    const confirmDialogRef = this.addUserDialog.open(AddUserComponent);
+
+    confirmDialogRef.afterClosed()
+      .subscribe(() => {
+        console.log('Dialog closed')
+      });
   }
 }

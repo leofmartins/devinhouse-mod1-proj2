@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from "@shared/interfaces";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class AuthService {
       })
   }
 
-  addUser(name: string, email: string, password: string) {
-    this.http.post<User>(this.usersUrl, {name: name, email: email, password: password})
+  addUser(newUser: User): Observable<User> {
+    return this.http.post<User>(this.usersUrl, newUser)
   }
 
 }

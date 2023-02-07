@@ -13,7 +13,9 @@
   <div class="right-side">
     <header>
       <p>Não possui uma conta?</p>
-      <button mat-stroked-button color="primary">Criar conta</button>
+      <button mat-stroked-button
+              color="primary"
+              (click)="openAddUserDialog()">Criar conta</button>
     </header>
     <form [formGroup]="loginForm" novalidate class="form">
       <h2 class="mat-title">Login</h2>

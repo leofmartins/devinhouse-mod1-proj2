@@ -1,0 +1,81 @@
+<div *ngIf="!submiting">
+  <h1 mat-dialog-title>Preencha os campos abaixo para se cadastrar:</h1>
+  <div mat-dialog-content>
+    <form novalidate
+          [formGroup]="addUserForm" (ngSubmit)="createAccount()">
+      <div class="col">
+        <div class="row">
+          <mat-form-field
+            class="full-width"
+            appearance="outline">
+            <mat-label>Nome: </mat-label>
+            <input matInput placeholder="Informe seu nome" formControlName="name">
+            <mat-error *ngIf="addUserForm.controls['name'].hasError('required')">
+              O nome é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            class="full-width"
+            appearance="outline">
+            <mat-label>Email: </mat-label>
+            <input matInput
+                   placeholder="Ex. alex@email.com"
+                   formControlName="email">
+            <mat-error *ngIf="addUserForm.controls['email'].hasError('required')">
+              O e-mai é obrigatório
+            </mat-error>
+            <mat-error
+              *ngIf="addUserForm.controls['email'].hasError('email')
+            && !addUserForm.controls['email'].hasError('required')">
+              Digite um e-mail válido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <mat-form-field
+            class="full-width"
+            appearance="outline">
+            <mat-label>Senha: </mat-label>
+            <input matInput
+                   type="password"
+                   placeholder="Mínimo de 8 caracteres"
+                   formControlName="password">
+            <mat-error
+              *ngIf="addUserForm.controls['password'].hasError('required')">
+              A senha é obrigatória
+            </mat-error>
+            <mat-error
+              *ngIf="addUserForm.controls['password'].hasError('minlength')
+            && !addUserForm.controls['password'].hasError('required')">
+              A senha deve conter pelo menos 8 caracteres
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            class="full-width"
+            appearance="outline">
+            <mat-label>Confirme sua senha: </mat-label>
+            <input matInput
+                   type="password"
+                   placeholder="Confirme sua senha"
+                   formControlName="passwordConfirmation">
+            <mat-error *ngIf="addUserForm.controls['passwordConfirmation'].hasError('required')">
+              A confirmação de senha é obrigatória
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+        <span
+          *ngIf="addUserForm.getError('mismatch')">
+          As senhas deve ser iguais
+        </span>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" type="submit">Criar conta</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="submiting">
+  <mat-spinner></mat-spinner>
+</div>
