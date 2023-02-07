@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   addUser(newUser: User): Observable<User> {
-    return this.http.post<User>(this.usersUrl, newUser)
+    return this.http.post<User>(this.usersUrl, newUser, this.httpOptions)
   }
 
 }

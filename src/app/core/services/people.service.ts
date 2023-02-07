@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { People, Person } from "@shared/interfaces";
+import { Appointment, People, Person } from "@shared/interfaces";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeopleService {
-  private peopleUrl = 'http://localhost:3000/people';
+  private peopleUrl = 'http://localhost:3000/persons';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,6 +29,10 @@ export class PeopleService {
 
   editPerson(person: Person, id: string): Observable<Person> {
     return this.http.put<Person>(`${this.peopleUrl}/${id}`, person, this.httpOptions);
+  }
+
+  addAppointment(appointment: Appointment, id: string): Observable<Appointment> {
+    return this.http.post<Appointment>(`${this.peopleUrl}/${id}/appointments`, appointment, this.httpOptions);
   }
 
   deletePerson(id: string): Observable<Person> {

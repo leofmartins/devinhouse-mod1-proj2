@@ -7,7 +7,7 @@
                [matAutocomplete]="auto"
                [formControl]="personCtrl">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let people of filteredPeople | async" [value]="people.name" (click)="getAppointment(people.id)">
+          <mat-option *ngFor="let people of filteredPeople | async" [value]="people.name" (click)="getPerson(people.id)">
             <span>id: {{ people.id }} | {{ people.name }}</span>
           </mat-option>
         </mat-autocomplete>
@@ -25,7 +25,7 @@
           <button
             mat-raised-button
             color="primary"
-            (click)="updateAppointmentPerson()"
+            (click)="addAppointment()"
             [disabled]="addAppointmentForm.invalid">SALVAR</button>
         </mat-card-actions>
         <mat-card-title *ngIf="selectedPerson">Consulta de {{ selectedPerson.name }}</mat-card-title>

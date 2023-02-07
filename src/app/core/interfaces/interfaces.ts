@@ -1,13 +1,19 @@
-interface Appointment {
+export interface Appointment {
+
+  id: string;
+  peopleId: string;
   appointmentTime: string;
   appointmentDate: string;
   dosageAndPrecaution: string;
   healthProblemDescription: string;
-  prescriptionMedication?: string
-  reasonOfAppointment: string
+  prescriptionMedication?: string;
+  reasonOfAppointment: string;
 }
 
 interface Exam {
+
+  id: string;
+  peopleId: string
   documentUrl?: string;
   examName: string;
   examTime: string;

@@ -40,7 +40,6 @@ export class AddAppointmentComponent implements OnInit {
   }
   ngOnInit() {
     this.addAppointmentForm = this.fb.group({
-      // appointment: this.fb.group({
         reasonOfAppointment: ['', Validators.compose([
           Validators.required, Validators.minLength(8), Validators.maxLength(64)
         ])],
@@ -61,31 +60,29 @@ export class AddAppointmentComponent implements OnInit {
     )
   }
 
-  getAppointment(id: string) {
+  getPerson(id: string) {
     this.loading = true;
     this.peopleService.getPerson(id)
       .subscribe((person) => {
         this.selectedPerson = person;
-        console.log(person.id);
-        if (person.appointment) {
-          this.addAppointmentForm.patchValue({
-              reasonOfAppointment: person.appointment.reasonOfAppointment,
-              appointmentDate: person.appointment.appointmentDate,
-              appointmentTime: person.appointment.appointmentTime,
-              healthProblemDescription: person.appointment.healthProblemDescription,
-              prescriptionMedication: person.appointment.prescriptionMedication,
-              dosageAndPrecaution: person.appointment.dosageAndPrecaution
-          })
-        }
+        // if (person.appointment) {
+        //   this.addAppointmentForm.patchValue({
+        //       reasonOfAppointment: person.appointment.reasonOfAppointment,
+        //       appointmentDate: person.appointment.appointmentDate,
+        //       appointmentTime: person.appointment.appointmentTime,
+        //       healthProblemDescription: person.appointment.healthProblemDescription,
+        //       prescriptionMedication: person.appointment.prescriptionMedication,
+        //       dosageAndPrecaution: person.appointment.dosageAndPrecaution
+        //   })
+        // }
         this.loading = false;
       });
   }
-  updateAppointmentPerson() {
-    this.selectedPerson.appointment = this.addAppointmentForm.value;
-    this.peopleService.editPerson(this.selectedPerson, this.selectedPerson.id)
-      .subscribe(editedPerson => {
+  addAppointment() {
+    this.peopleService.addAppointment(this.addAppointmentForm.value, this.selectedPerson.id)
+      .subscribe(() => {
         this._snackBar.open(
-          `Consulta de ${editedPerson.name} cadastrada com sucesso.`,
+          `Consulta de ${this.selectedPerson.name} cadastrada com sucesso.`,
           'OK',
           { duration: 3000 }
         );
@@ -96,11 +93,10 @@ export class AddAppointmentComponent implements OnInit {
 
   deleteAppointmentPerson() {
     this.addAppointmentForm.reset();
-    this.selectedPerson.appointment = this.addAppointmentForm.value;
-    this.peopleService.editPerson(this.selectedPerson, this.selectedPerson.id)
-      .subscribe(editedPerson => {
+    this.peopleService.editPerson(this.addAppointmentForm.value, this.selectedPerson.id)
+      .subscribe(() => {
         this._snackBar.open(
-          `Consulta de ${editedPerson.name} excluída com sucesso.`,
+          `Consulta de ${this.selectedPerson.name} excluída com sucesso.`,
           'OK',
           { duration: 3000 }
         );
